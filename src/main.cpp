@@ -59,6 +59,7 @@ int main(int argc, int* argv[])
 	}
 
 	myShader.~Shader();
+	myShader.~Shader();
 	glfwTerminate();
 	return 0;
 }
