@@ -66,7 +66,11 @@ Shader::Shader(const char* vertSrc, const char* fragSrc)
 		glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
 		std::cout << "ERROR: Program did not link correctly - " << infoLog << std::endl;
 	}
-	
+}
+
+void Shader::Use()
+{
+	glUseProgram(shaderProgram);
 }
 
 Shader::~Shader()

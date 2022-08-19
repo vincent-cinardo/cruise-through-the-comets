@@ -10,7 +10,6 @@ class Shader
 public:
 	Shader(const char* vertSrc, const char* fragSrc);
 	~Shader();
-	void SetActive();
 	void Use();
 	
 private:

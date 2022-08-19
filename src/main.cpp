@@ -2,6 +2,7 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Shader.h"
+#include "Sprite.h"
 
 void processInput(GLFWwindow* window)
 {
@@ -40,29 +41,21 @@ int main(int argc, int* argv[])
 
 	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
 
-	float vertices[] = {
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.0f,  0.5f, 0.0f
-	};
-
-	GLuint vao, vbo, ebo;
-	glGenBuffers(1, &vao);
-	glGenBuffers(1, &vbo);
-	glGenBuffers(1, &ebo);
-
-	//ADD HERE
-
-	Shader myShader(".\\default.vert", ".\\default.frag");
+	Shader myShader = Shader::Shader(".\\default.vert", ".\\default.frag");
+	Sprite mySprite = Sprite::Sprite();
 
 	while (!glfwWindowShouldClose(window))
 	{
 		processInput(window);
-		glfwSwapBuffers(window);
-		glfwPollEvents();
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		myShader.Use();
+		mySprite.Draw();
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	myShader.~Shader();
