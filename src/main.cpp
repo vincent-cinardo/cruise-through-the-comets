@@ -3,6 +3,7 @@
 #include "GLFW/glfw3.h"
 #include "Shader.h"
 #include "Sprite.h"
+#include "Texture.h"
 
 void processInput(GLFWwindow* window)
 {
@@ -41,7 +42,6 @@ int main(int argc, int* argv[])
 
 	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
 
-	Shader myShader = Shader::Shader(".\\default.vert", ".\\default.frag");
 	Sprite mySprite = Sprite::Sprite();
 
 	while (!glfwWindowShouldClose(window))
@@ -51,15 +51,13 @@ int main(int argc, int* argv[])
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		myShader.Use();
 		mySprite.Draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	myShader.~Shader();
-	myShader.~Shader();
+	mySprite.~Sprite();
 	glfwTerminate();
 	return 0;
 }

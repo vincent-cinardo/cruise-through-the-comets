@@ -1,5 +1,9 @@
 #include "Shader.h"
 
+Shader::Shader()
+{
+}
+
 Shader::Shader(const char* vertSrc, const char* fragSrc)
 {
 	std::ifstream vertFile(vertSrc);
@@ -70,6 +74,7 @@ Shader::Shader(const char* vertSrc, const char* fragSrc)
 
 void Shader::Use()
 {
+	//Maybe set the texture mode here?
 	glUseProgram(shaderProgram);
 }
 

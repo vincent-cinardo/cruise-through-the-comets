@@ -8,6 +8,7 @@
 class Shader
 {
 public:
+	Shader();
 	Shader(const char* vertSrc, const char* fragSrc);
 	~Shader();
 	void Use();
