@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include "Sprite.h"
 #include "Texture.h"
+#include "stb_image.h"
 
 void processInput(GLFWwindow* window)
 {
@@ -41,6 +42,8 @@ int main(int argc, int* argv[])
 	glViewport(0, 0, 800, 600);
 
 	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
+
+	stbi_set_flip_vertically_on_load(true);
 
 	Sprite mySprite = Sprite::Sprite();
 

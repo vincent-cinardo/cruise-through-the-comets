@@ -83,3 +83,5 @@ Shader::~Shader()
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
 }
+
+//Shader::setInt(const char *name);
