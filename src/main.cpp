@@ -13,9 +13,15 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "main.h"
 
 float lastTime = 0.0f, deltaTime;
-float inputX, inputY;
+float inputX, inputY, inputZ = 0.0f;
+
+void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
+{
+	inputZ = yoffset;
+}
 
 void processInput(GLFWwindow* window)
 {
@@ -70,6 +76,7 @@ int main(int argc, int* argv[])
 	glViewport(0, 0, 800, 600);
 
 	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
+	glfwSetScrollCallback(window, scroll_call_back);
 
 	stbi_set_flip_vertically_on_load(true);
 
@@ -87,9 +94,16 @@ int main(int argc, int* argv[])
 		//Input
 		processInput(window);
 
+
 		//Game Data Manipulation
 		//Implement Z movement by scrolling.
-		camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
+		spritePtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY);
+
+		//Change to this to make the camera move with sprite
+		//camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
+
+		camPtr->ZoomOrtho(20.0f * deltaTime * inputZ, 20.0f * deltaTime * inputZ, spritePtr->GetProgram());
+		camPtr->View(0.0f, 0.0f, spritePtr->GetProgram());
 
 		//Render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

@@ -53,11 +53,24 @@ Sprite::~Sprite()
 	shaderPtr->~Shader();
 }
 
+void Sprite::Move(float x, float y)
+{
+	this->x += x;
+	this->y += y;
+}
+
 void Sprite::Draw()
 {
 	shader.Use();
 	texture.Use();
+	shader.SetModel(x, y);
+
 	glBindVertexArray(vao);
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 	//glBindVertexArray(0);
+}
+
+unsigned int Sprite::GetProgram()
+{
+	return shader.GetProgram();
 }

@@ -1,4 +1,5 @@
 ﻿  main.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(84,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(85,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(23,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(91,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(92,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   unamed-alien-game.vcxproj -> C:\Users\vmc4\Projects\unamed-alien-game\x64\Debug\unamed-alien-game.exe

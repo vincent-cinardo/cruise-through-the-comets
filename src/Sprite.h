@@ -10,6 +10,8 @@ public:
 	Sprite();
 	~Sprite();
 	void Draw();
+	void Move(float x, float y);
+	unsigned int GetProgram();
 
 private:
 	GLuint vao, vbo, ebo;

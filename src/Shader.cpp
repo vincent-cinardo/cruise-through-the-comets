@@ -79,15 +79,28 @@ void Shader::Use()
 	glUseProgram(shaderProgram);
 }
 
+//Sets the model uniform in the currently bound vertex shader.
+void Shader::SetModel(float x, float y)
+{
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(x, y, 0.0f));
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model));
+}
+
 Shader::~Shader()
 {
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
 }
 
-Shader::setMat4()
+unsigned int Shader::GetProgram()
+{
+	return shaderProgram;
+}
+
+/*Shader::setMat4()
 {
 
-}
+}*/
 
 //Shader::setInt(const char *name);
