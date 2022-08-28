@@ -12,7 +12,10 @@ Camera::Camera()
 
 	view = glm::mat4(1.0f);
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
-	//std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
+	width = 30.0f;
+	height = 30.0f;
+
+	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
 }
 
 //Specify the position of the camera
@@ -23,6 +26,8 @@ Camera::Camera(float x, float y, float z)
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)
 	);
+	width = 30.0f;
+	height = 30.0f;
 }
 
 Camera::~Camera()
@@ -32,13 +37,25 @@ Camera::~Camera()
 
 void Camera::Move(float x, float y, float z)
 {
-	//glm::translate(view, glm::vec3(x, y, z));
+	view = glm::translate(view, glm::vec3(-x, -y, -z));
 }
 
 //Must be called to set the projection matrix in shader.
-void Camera::ZoomOrtho(float width, float height, unsigned int shaderProgram)
+void Camera::ZoomOrtho(float widthAmt, float heightAmt, unsigned int shaderProgram)
 {
-	glm::mat4 projection = glm::ortho(-width / 2, width / 2, -height / 2, -height / 2, 0.0f, -15.0f);
+	//width = (width - widthAmt < 1.0f) ? width - widthAmt : 1.0f;
+	//height = (height - heightAmt < 1.0f) ? height - heightAmt : 1.0f;
+	width = (width - widthAmt > 2.0f) ? width-widthAmt : 2.0f;
+	height = (height - heightAmt > 2.0f) ? height-heightAmt : 2.0f;
+
+	glm::mat4 projection = glm::ortho(
+		-width/2,
+		width/2,
+		-height/2, 
+		height/2, 
+		0.0f, 
+		15.0f
+	);
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
 

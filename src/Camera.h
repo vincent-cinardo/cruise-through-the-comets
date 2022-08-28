@@ -20,5 +20,6 @@ public:
 private:
 	glm::mat4 view;
 	float x, y, z;
+	float width, height;
 };
 

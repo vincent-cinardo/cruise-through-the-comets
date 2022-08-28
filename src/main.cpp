@@ -6,7 +6,7 @@
 #include "Texture.h"
 #include "stb_image.h"
 
-//Camera
+//Camera implementation
 #include "Camera.h"
 
 //Matrix/vector math
@@ -86,11 +86,6 @@ int main(int argc, int* argv[])
 	Camera cam = Camera::Camera();
 	Camera* camPtr = &cam;
 
-	//glm::mat4 view = glm::mat4(1.0f);
-	//view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
-
-	//glm::mat4 projection = glm::ortho(-15, 15,,,,);
-
 	while (!glfwWindowShouldClose(window))
 	{
 		deltaTime = glfwGetTime() - lastTime;
@@ -104,10 +99,12 @@ int main(int argc, int* argv[])
 		//Implement Z movement by scrolling.
 		spritePtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY);
 
-		//Change to this to make the camera move with sprite
+		//Uncomment this to make the camera move with sprite
 		//camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
 
-		camPtr->ZoomOrtho(30.0f, 30.0f, spritePtr->GetProgram());
+		std::cout << inputZ << std::endl;
+		camPtr->ZoomOrtho(1000.0f * inputZ * deltaTime, 1000.0f * inputZ * deltaTime, spritePtr->GetProgram());
+		inputZ = 0;
 		camPtr->View(0.0f, 0.0f, spritePtr->GetProgram());
 
 		//Render
