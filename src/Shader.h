@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -12,6 +13,7 @@ public:
 	Shader(const char* vertSrc, const char* fragSrc);
 	~Shader();
 	void Use();
+	void setMat4();
 	
 private:
 	unsigned int vertShader, fragShader, shaderProgram;

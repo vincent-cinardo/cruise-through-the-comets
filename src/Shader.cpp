@@ -2,6 +2,7 @@
 
 Shader::Shader()
 {
+
 }
 
 Shader::Shader(const char* vertSrc, const char* fragSrc)
@@ -82,6 +83,11 @@ Shader::~Shader()
 {
 	glDeleteShader(vertShader);
 	glDeleteShader(fragShader);
+}
+
+Shader::setMat4()
+{
+
 }
 
 //Shader::setInt(const char *name);

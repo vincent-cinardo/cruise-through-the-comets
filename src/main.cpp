@@ -6,9 +6,37 @@
 #include "Texture.h"
 #include "stb_image.h"
 
+//Camera
+#include "Camera.h"
+
+//Matrix/vector math
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
+float lastTime = 0.0f, deltaTime;
+float inputX, inputY;
+
 void processInput(GLFWwindow* window)
 {
-	//Process input here
+	inputX = 0.0f;
+	inputY = 0.0f;
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	{
+		inputY += 1.0f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	{
+		inputY += -1.0f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+	{
+		inputX += -1.0f;
+	}
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+	{
+		inputX += 1.0f;
+	}
 }
 
 void frame_buffer_callback(GLFWwindow* window, int width, int height)
@@ -45,22 +73,35 @@ int main(int argc, int* argv[])
 
 	stbi_set_flip_vertically_on_load(true);
 
-	Sprite mySprite = Sprite::Sprite();
+	Sprite sprite = Sprite::Sprite();
+	Sprite* spritePtr = &sprite;
+
+	Camera cam = Camera::Camera();
+	Camera* camPtr = &cam;
 
 	while (!glfwWindowShouldClose(window))
 	{
+		deltaTime = glfwGetTime() - lastTime;
+		lastTime = glfwGetTime();
+		
+		//Input
 		processInput(window);
 
+		//Game Data Manipulation
+		//Implement Z movement by scrolling.
+		camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
+
+		//Render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		mySprite.Draw();
+		spritePtr->Draw();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	mySprite.~Sprite();
+	spritePtr->~Sprite();
 	glfwTerminate();
 	return 0;
 }
