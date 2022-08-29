@@ -3,18 +3,12 @@
 //Camera positioned to -3 by default
 Camera::Camera() 
 {
-	//glm::lookAt(,)
-	/*view = glm::lookAt(
-		glm::vec3(0.0f, 0.0f, 10.0f), 
-		glm::vec3(0.0f, 0.0f, 0.0f),
-		glm::vec3(0.0f, 1.0f, 0.0f)
-	);*/
-
 	view = glm::mat4(1.0f);
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
-	width = 30.0f;
-	height = 30.0f;
-
+	width = 16.0f;
+	height = 9.0f;
+	aspectx = 16.0f / 9.0f;
+	aspecty = 9.0f / 16.0f;
 	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
 }
 
@@ -26,14 +20,13 @@ Camera::Camera(float x, float y, float z)
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)
 	);
+	aspectx = 16.0f;
+	aspecty = 9.0f;
 	width = 30.0f;
 	height = 30.0f;
 }
 
-Camera::~Camera()
-{
-
-}
+Camera::~Camera() {}
 
 void Camera::Move(float x, float y, float z)
 {
@@ -43,11 +36,16 @@ void Camera::Move(float x, float y, float z)
 //Must be called to set the projection matrix in shader.
 void Camera::ZoomOrtho(float widthAmt, float heightAmt, unsigned int shaderProgram)
 {
-	//width = (width - widthAmt < 1.0f) ? width - widthAmt : 1.0f;
-	//height = (height - heightAmt < 1.0f) ? height - heightAmt : 1.0f;
-	width = (width - widthAmt > 2.0f) ? width-widthAmt : 2.0f;
-	height = (height - heightAmt > 2.0f) ? height-heightAmt : 2.0f;
+	//width = (width - widthAmt * aspectx > 2.0f * aspectx) ? width - widthAmt * aspecty : 16.0f;
+	//height = (height - heightAmt * aspecty > 2.0f * aspecty) ? height - heightAmt * aspecty : 9.0f;
 
+	width = (width - aspectx*widthAmt);
+	height = (height - aspecty*heightAmt);
+
+	//aspectx = (aspectx - widthAmt > 2.0f) ? aspectx - widthAmt : 2.0f;
+	//aspecty = (aspecty - heightAmt > 2.0f) ? aspecty - heightAmt : 2.0f;
+
+	//Previous
 	glm::mat4 projection = glm::ortho(
 		-width/2,
 		width/2,
@@ -56,6 +54,16 @@ void Camera::ZoomOrtho(float widthAmt, float heightAmt, unsigned int shaderProgr
 		0.0f, 
 		15.0f
 	);
+
+	//Dependent on aspect ratio
+	/*glm::mat4 projection = glm::ortho(
+		-aspectx / 2,
+		aspectx / 2,
+		-aspecty / 2,
+		aspecty / 2,
+		0.0f,
+		15.0f
+	);*/
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
 

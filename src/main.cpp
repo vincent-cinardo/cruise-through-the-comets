@@ -17,6 +17,13 @@
 
 float lastTime = 0.0f, deltaTime;
 float inputX, inputY, inputZ = 0.0f;
+const unsigned int screenWidth = 1920;
+const unsigned int screenHeight = 1080;
+
+int sum(int x, int y)
+{
+	return x + y;
+}
 
 void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
 {
@@ -73,7 +80,7 @@ int main(int argc, int* argv[])
 		return -1;
 	}
 
-	glViewport(0, 0, 800, 600);
+	glViewport(0, 0, screenWidth, screenHeight);
 
 	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
 	glfwSetScrollCallback(window, scroll_call_back);
@@ -82,6 +89,8 @@ int main(int argc, int* argv[])
 
 	Sprite sprite = Sprite::Sprite();
 	Sprite* spritePtr = &sprite;
+
+	//Sprite sweetMike = Sprite::Sprite(2.0f, 2.0f, ".\\textures\\dog.png");
 
 	Camera cam = Camera::Camera();
 	Camera* camPtr = &cam;
@@ -93,7 +102,6 @@ int main(int argc, int* argv[])
 		
 		//Input
 		processInput(window);
-
 
 		//Game Data Manipulation
 		//Implement Z movement by scrolling.
