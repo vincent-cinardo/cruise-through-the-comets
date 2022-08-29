@@ -20,11 +20,6 @@ float inputX, inputY, inputZ = 0.0f;
 const unsigned int screenWidth = 1920;
 const unsigned int screenHeight = 1080;
 
-int sum(int x, int y)
-{
-	return x + y;
-}
-
 void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
 {
 	inputZ = yoffset;
@@ -64,7 +59,7 @@ int main(int argc, int* argv[])
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow* window = glfwCreateWindow(800, 600, "Alien Game", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(screenHeight, screenHeight, "Alien Game", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Window failed to open" << std::endl;
@@ -111,7 +106,7 @@ int main(int argc, int* argv[])
 		//camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
 
 		std::cout << inputZ << std::endl;
-		camPtr->ZoomOrtho(1000.0f * inputZ * deltaTime, 1000.0f * inputZ * deltaTime, spritePtr->GetProgram());
+		camPtr->ZoomOrtho(10.0f * inputZ * deltaTime, screenWidth/screenHeight, spritePtr->GetProgram());
 		inputZ = 0;
 		camPtr->View(0.0f, 0.0f, spritePtr->GetProgram());
 

@@ -5,10 +5,9 @@ Camera::Camera()
 {
 	view = glm::mat4(1.0f);
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
-	width = 16.0f;
-	height = 9.0f;
-	aspectx = 16.0f / 9.0f;
-	aspecty = 9.0f / 16.0f;
+	width = 30.0f;
+	height = 30.0f;
+	fov = 45.0f;
 	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
 }
 
@@ -20,8 +19,6 @@ Camera::Camera(float x, float y, float z)
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)
 	);
-	aspectx = 16.0f;
-	aspecty = 9.0f;
 	width = 30.0f;
 	height = 30.0f;
 }
@@ -34,26 +31,32 @@ void Camera::Move(float x, float y, float z)
 }
 
 //Must be called to set the projection matrix in shader.
-void Camera::ZoomOrtho(float widthAmt, float heightAmt, unsigned int shaderProgram)
+void Camera::ZoomOrtho(float fovAmt, float aspect, unsigned int shaderProgram)
 {
 	//width = (width - widthAmt * aspectx > 2.0f * aspectx) ? width - widthAmt * aspecty : 16.0f;
 	//height = (height - heightAmt * aspecty > 2.0f * aspecty) ? height - heightAmt * aspecty : 9.0f;
 
-	width = (width - aspectx*widthAmt);
-	height = (height - aspecty*heightAmt);
+	//width = (width - widthAmt) > 2.0f ? width - widthAmt: 2.0f;
+	//height = (height - heightAmt) > 2.0f ? height - heightAmt : 2.0f;
 
 	//aspectx = (aspectx - widthAmt > 2.0f) ? aspectx - widthAmt : 2.0f;
 	//aspecty = (aspecty - heightAmt > 2.0f) ? aspecty - heightAmt : 2.0f;
 
+	this->fov += fovAmt;
+
+	glm::mat4 projection = glm::perspective(
+		this->fov, 1920.0f/1080.0f, 0.1f, 30.0f
+	);
+
 	//Previous
-	glm::mat4 projection = glm::ortho(
+	/*glm::mat4 projection = glm::ortho(
 		-width/2,
 		width/2,
 		-height/2, 
 		height/2, 
 		0.0f, 
 		15.0f
-	);
+	);*/
 
 	//Dependent on aspect ratio
 	/*glm::mat4 projection = glm::ortho(

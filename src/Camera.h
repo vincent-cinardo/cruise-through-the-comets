@@ -15,11 +15,11 @@ public:
 	Camera(float x, float y, float z);
 	~Camera();
 	void Move(float x, float y, float z);
-	void ZoomOrtho(float width, float height, unsigned int shaderProgram);
+	void ZoomOrtho(float fovAmt, float aspect, unsigned int shaderProgram);
 	void View(float x, float y, unsigned int shaderProgram);
 private:
 	glm::mat4 view;
 	float x, y, z;
-	float width, height, aspectx, aspecty;
+	float width, height, fov;
 };
 
