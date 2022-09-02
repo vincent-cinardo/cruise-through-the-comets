@@ -39,7 +39,7 @@ Sprite::Sprite()
 	glEnableVertexAttribArray(0);
 	glEnableVertexAttribArray(1);
 
-	texture = Texture::Texture(".\\textures\\dog.png");
+	texture = Texture::Texture(".\\textures\\stick.png");
 	shaderPtr = &shader;
 	texturePtr = &texture;
 }

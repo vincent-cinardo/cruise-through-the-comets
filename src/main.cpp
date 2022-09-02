@@ -17,8 +17,8 @@
 
 float lastTime = 0.0f, deltaTime;
 float inputX, inputY, inputZ = 0.0f;
-const unsigned int screenWidth = 1920;
-const unsigned int screenHeight = 1080;
+unsigned int screenWidth = 1920;
+unsigned int screenHeight = 1080;
 
 void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
 {
@@ -49,6 +49,8 @@ void processInput(GLFWwindow* window)
 
 void frame_buffer_callback(GLFWwindow* window, int width, int height)
 {
+	screenWidth = width;
+	screenHeight = height;
 	glViewport(0, 0, width, height);
 }
 
@@ -106,7 +108,7 @@ int main(int argc, int* argv[])
 		//camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
 
 		std::cout << inputZ << std::endl;
-		camPtr->ZoomOrtho(10.0f * inputZ * deltaTime, screenWidth/screenHeight, spritePtr->GetProgram());
+		camPtr->Zoom(10.0f * inputZ * deltaTime, (float) screenWidth/ (float)screenHeight, spritePtr->GetProgram());
 		inputZ = 0;
 		camPtr->View(0.0f, 0.0f, spritePtr->GetProgram());
 

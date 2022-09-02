@@ -31,7 +31,7 @@ void Camera::Move(float x, float y, float z)
 }
 
 //Must be called to set the projection matrix in shader.
-void Camera::ZoomOrtho(float fovAmt, float aspect, unsigned int shaderProgram)
+void Camera::Zoom(float fovAmt, float aspect, unsigned int shaderProgram)
 {
 	//width = (width - widthAmt * aspectx > 2.0f * aspectx) ? width - widthAmt * aspecty : 16.0f;
 	//height = (height - heightAmt * aspecty > 2.0f * aspecty) ? height - heightAmt * aspecty : 9.0f;
@@ -45,7 +45,7 @@ void Camera::ZoomOrtho(float fovAmt, float aspect, unsigned int shaderProgram)
 	this->fov += fovAmt;
 
 	glm::mat4 projection = glm::perspective(
-		this->fov, 1920.0f/1080.0f, 0.1f, 30.0f
+		this->fov, aspect, 0.1f, 30.0f
 	);
 
 	//Previous
