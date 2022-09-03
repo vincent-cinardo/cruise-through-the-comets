@@ -20,7 +20,7 @@ public:
 	void Use();
 	void SetModel(float x, float y);
 	unsigned int GetProgram();
-	//void setMat4();
+	void SetMat4(const char* name, glm::mat4 matrix);
 	
 private:
 	unsigned int vertShader, fragShader, shaderProgram;

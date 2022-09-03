@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include "Sprite.h"
 #include "Texture.h"
+#include "Ground.h"
 #include "stb_image.h"
 
 //Camera implementation
@@ -92,6 +93,14 @@ int main(int argc, int* argv[])
 	Camera cam = Camera::Camera();
 	Camera* camPtr = &cam;
 
+	Ground ground = Ground::Ground();
+	Ground* groundPtr = &ground;
+
+	//Do I need this?
+	//glActiveTexture(GL_TEXTURE0);
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
 	while (!glfwWindowShouldClose(window))
 	{
 		deltaTime = glfwGetTime() - lastTime;
@@ -107,7 +116,7 @@ int main(int argc, int* argv[])
 		//Uncomment this to make the camera move with sprite
 		//camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
 
-		std::cout << inputZ << std::endl;
+		//std::cout << inputZ << std::endl;
 		camPtr->Zoom(10.0f * inputZ * deltaTime, (float) screenWidth/ (float)screenHeight, spritePtr->GetProgram());
 		inputZ = 0;
 		camPtr->View(0.0f, 0.0f, spritePtr->GetProgram());
@@ -116,6 +125,8 @@ int main(int argc, int* argv[])
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//Camera
+		groundPtr->Draw();
 		spritePtr->Draw();
 
 		glfwSwapBuffers(window);

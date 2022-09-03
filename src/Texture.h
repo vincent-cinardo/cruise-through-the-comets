@@ -10,10 +10,12 @@ class Texture
 {
 public:
 	Texture();
+	~Texture();
 	Texture(const char* path);
 	void Use();
 
 private:
+	
 	GLuint texture;
 };
 

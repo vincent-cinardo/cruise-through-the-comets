@@ -51,6 +51,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -71,6 +74,9 @@
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -78,6 +84,12 @@
     </None>
     <None Include="default.vert">
       <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="ground.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="ground.frag">
+      <Filter>Shaders\Frag</Filter>
     </None>
   </ItemGroup>
 </Project>

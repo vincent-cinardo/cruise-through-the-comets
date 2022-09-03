@@ -98,9 +98,7 @@ unsigned int Shader::GetProgram()
 	return shaderProgram;
 }
 
-/*Shader::setMat4()
+void Shader::SetMat4(const char* name, glm::mat4 values)
 {
-
-}*/
-
-//Shader::setInt(const char *name);
+	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(values));
+}

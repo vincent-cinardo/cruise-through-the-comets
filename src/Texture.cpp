@@ -5,6 +5,11 @@ Texture::Texture()
 	texture = 0;
 }
 
+Texture::~Texture()
+{
+	glDeleteTextures(1, &texture);
+}
+
 Texture::Texture(const char* path)
 {
 	int x, y, comp;
