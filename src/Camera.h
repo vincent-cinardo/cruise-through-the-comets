@@ -12,6 +12,7 @@ class Camera
 {
 public:
 	Camera();
+	Camera(glm::mat4 view, glm::mat4 projection);
 	Camera(float x, float y, float z);
 	~Camera();
 	void Move(float x, float y, float z);

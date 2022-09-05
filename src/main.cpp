@@ -5,6 +5,7 @@
 #include "Sprite.h"
 #include "Texture.h"
 #include "Ground.h"
+#include "Renderer.h"
 #include "stb_image.h"
 
 //Camera implementation
@@ -84,6 +85,8 @@ int main(int argc, int* argv[])
 	glfwSetScrollCallback(window, scroll_call_back);
 
 	stbi_set_flip_vertically_on_load(true);
+
+	Renderer renderer = Renderer::Renderer(90.0f, (float)screenWidth / (float)screenHeight);
 
 	Sprite sprite = Sprite::Sprite();
 	Sprite* spritePtr = &sprite;

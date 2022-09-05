@@ -11,6 +11,17 @@ Camera::Camera()
 	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
 }
 
+Camera::Camera(glm::mat4 view, glm::mat4 projection)
+{
+	view = glm::mat4(1.0f);
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
+	width = 30.0f;
+	height = 30.0f;
+	fov = 45.0f;
+	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
+}
+
+
 //Specify the position of the camera
 Camera::Camera(float x, float y, float z)
 {
