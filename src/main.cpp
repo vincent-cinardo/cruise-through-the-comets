@@ -131,6 +131,7 @@ int main(int argc, int* argv[])
 		//Camera
 		groundPtr->Draw();
 		spritePtr->Draw();
+		renderer.DrawTest(); //Need to get this to work.
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

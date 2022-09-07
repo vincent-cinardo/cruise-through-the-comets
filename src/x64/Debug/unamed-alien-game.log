@@ -1,12 +1,4 @@
 ﻿  Renderer.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(30,3): warning C4838: conversion from 'unsigned int' to 'float' requires a narrowing conversion
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(30,3): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(37,3): warning C4838: conversion from 'unsigned int' to 'float' requires a narrowing conversion
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(37,3): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(44,3): warning C4838: conversion from 'unsigned int' to 'float' requires a narrowing conversion
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(44,3): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(51,3): warning C4838: conversion from 'unsigned int' to 'float' requires a narrowing conversion
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(51,3): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(68,38): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(56): warning C4172: returning address of local variable or temporary: arr
+C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(121,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(122,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   unamed-alien-game.vcxproj -> C:\Users\vmc4\Projects\unamed-alien-game\x64\Debug\unamed-alien-game.exe
