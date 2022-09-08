@@ -1,4 +1,2 @@
-﻿  Renderer.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(121,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Renderer.cpp(122,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+﻿  EBO.cpp
   unamed-alien-game.vcxproj -> C:\Users\vmc4\Projects\unamed-alien-game\x64\Debug\unamed-alien-game.exe

@@ -66,6 +66,9 @@
     <ClCompile Include="VBO.cpp">
       <Filter>Source Files\GL</Filter>
     </ClCompile>
+    <ClCompile Include="Batch.cpp">
+      <Filter>Source Files\GL</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sprite.h">
@@ -99,6 +102,9 @@
       <Filter>Header Files\GL</Filter>
     </ClInclude>
     <ClInclude Include="EBO.h">
+      <Filter>Header Files\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="Batch.h">
       <Filter>Header Files\GL</Filter>
     </ClInclude>
   </ItemGroup>

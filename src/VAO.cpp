@@ -22,6 +22,10 @@ void VAO::Unbind()
 	glBindVertexArray(0);
 }
 
+void VAO::Enable(int index)
+{
+}
+
 void VAO::SetAttribute(int index, int size, int offset)
 {
 	glEnableVertexAttribArray(index);

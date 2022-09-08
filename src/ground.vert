@@ -5,13 +5,13 @@ layout (location = 1) in vec2 tex;
 
 uniform mat4 projection;
 uniform mat4 view;
-uniform mat4 transform;
+uniform mat4 model;
 
-out vec2 text;
+//out vec2 text;
 
 void main() 
 {
 	//gl_Position = transform * vec4(pos, 1.0);
-	gl_Position = vec4(pos, 1.0);
-	vec2 text = tex;
+	gl_Position = projection * view * model * vec4(pos, 1.0);
+	//vec2 text = tex;
 }

@@ -7,6 +7,9 @@
 #include "Ground.h"
 #include "Renderer.h"
 #include "stb_image.h"
+#include "VBO.h"
+#include "VAO.h"
+#include "EBO.h"
 
 //Camera implementation
 #include "Camera.h"
@@ -86,21 +89,12 @@ int main(int argc, int* argv[])
 
 	stbi_set_flip_vertically_on_load(true);
 
+	Batch batch = Batch::Batch();
+
+	//Renderer::Batch batch();
+
 	Renderer renderer = Renderer::Renderer(90.0f, (float)screenWidth / (float)screenHeight);
-
-	Sprite sprite = Sprite::Sprite();
-	Sprite* spritePtr = &sprite;
-
-	//Sprite sweetMike = Sprite::Sprite(2.0f, 2.0f, ".\\textures\\dog.png");
-
-	Camera cam = Camera::Camera();
-	Camera* camPtr = &cam;
-
-	Ground ground = Ground::Ground();
-	Ground* groundPtr = &ground;
-
-	//Do I need this?
-	//glActiveTexture(GL_TEXTURE0);
+	renderer.AddBatch(batch);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -112,32 +106,17 @@ int main(int argc, int* argv[])
 		//Input
 		processInput(window);
 
-		//Game Data Manipulation
-		//Implement Z movement by scrolling.
-		spritePtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY);
-
-		//Uncomment this to make the camera move with sprite
-		//camPtr->Move(10.0f * deltaTime * inputX, 10.0f * deltaTime * inputY, 0.0f);
-
-		//std::cout << inputZ << std::endl;
-		camPtr->Zoom(10.0f * inputZ * deltaTime, (float) screenWidth/ (float)screenHeight, spritePtr->GetProgram());
-		inputZ = 0;
-		camPtr->View(0.0f, 0.0f, spritePtr->GetProgram());
-
 		//Render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		//Camera
-		groundPtr->Draw();
-		spritePtr->Draw();
 		renderer.DrawTest(); //Need to get this to work.
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	spritePtr->~Sprite();
+	renderer.~Renderer();
 	glfwTerminate();
 	return 0;
 }

@@ -18,9 +18,10 @@ public:
 	void Move(float x, float y, float z);
 	void Zoom(float fovAmt, float aspect, unsigned int shaderProgram);
 	void View(float x, float y, unsigned int shaderProgram);
-private:
 	glm::mat4 view;
+	glm::mat4 projection;
+private:
 	float x, y, z;
-	float width, height, fov;
+	float fov;
 };
 

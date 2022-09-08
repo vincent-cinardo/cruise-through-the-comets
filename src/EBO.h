@@ -6,10 +6,13 @@
 class EBO
 {
 public:
+	EBO();
 	EBO(const void* data, unsigned int size);
 	~EBO();
 	void Bind();
 	void Unbind();
+	int GetCount();
+	int* indices;
 
 private:
 	unsigned int id;

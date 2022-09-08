@@ -7,9 +7,7 @@ class Ground
 public:
 	Ground();
 	~Ground();
-
 	void Draw();
-	
 
 private:
 	GLuint vao, vbo, ebo;

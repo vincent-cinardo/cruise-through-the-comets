@@ -9,8 +9,10 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "Texture.h"
 #include "Camera.h"
 #include "Shader.h"
+#include "Batch.h"
 #include "VAO.h"
 #include "VBO.h"
 #include "EBO.h"
@@ -26,21 +28,11 @@ public:
 		//float texture; //wouldn't make sense here?!
 	};
 
-	struct Batch
-	{
-		std::array<Vertex, 256> vertices;
-		Shader& shader;
-		VAO vao;
-		VBO vbo;
-		EBO ebo;
-		GLuint texture;
-	};
-
 	Renderer();
 	Renderer(float fov, float aspect);
 	~Renderer();
 	std::array<Vertex, 4> Quad(float x, float y, float scale);
-	void AddBatch(Renderer::Batch batch);
+	void AddBatch(Batch batch);
 	void Draw();
 	void DrawTest();
 

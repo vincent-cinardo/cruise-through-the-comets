@@ -6,6 +6,7 @@
 class VBO
 {
 public:
+	VBO();
 	VBO(const void* data, unsigned int size);
 	~VBO();
 	void Bind();
