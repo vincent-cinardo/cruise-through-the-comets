@@ -1,2 +1,9 @@
-﻿  EBO.cpp
+﻿  Batch.cpp
+  EBO.cpp
+  Renderer.cpp
+  main.cpp
+C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(30,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(103,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(104,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   unamed-alien-game.vcxproj -> C:\Users\vmc4\Projects\unamed-alien-game\x64\Debug\unamed-alien-game.exe

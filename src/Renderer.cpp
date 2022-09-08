@@ -13,7 +13,10 @@ Renderer::Renderer()
 
 Renderer::~Renderer()
 {
-	
+	for (Batch batch : batches)
+	{
+		batch.~Batch();
+	}
 }
 
 Renderer::Renderer(float fov, float aspect)

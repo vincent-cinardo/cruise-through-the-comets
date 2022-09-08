@@ -18,8 +18,9 @@ Batch::Batch()
 	shader = Shader::Shader(".\\default.vert", ".\\defualt.frag");
 
 	vao = VAO::VAO(); //This is correct
+	std::cout << sizeof(indices);
 	vbo = VBO::VBO(vertices, sizeof(vertices));
-	ebo = EBO::EBO(vertices, sizeof(indices));
+	ebo = EBO::EBO(indices, sizeof(indices));
 
 	vao.Enable(0);
 	vao.SetAttribute(0, 5 * sizeof(float), 0);

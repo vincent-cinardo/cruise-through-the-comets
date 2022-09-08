@@ -2,22 +2,25 @@
 
 EBO::EBO()
 {
-
+	
 }
 
-EBO::EBO(const void* data, unsigned int size)
+EBO::EBO(int* data, unsigned int size)
 {
 	glGenBuffers(1, &id);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
-	indices = (int*)malloc(size);
+	indices = new int[size];
 	memcpy(indices, data, size);
 }
 
 EBO::~EBO()
 {
 	glDeleteBuffers(1, &id);
-	free(indices); //Why isn't this working?
+	if (indices != NULL)
+	{
+		delete[] indices;
+	}
 }
 
 void EBO::Bind()
