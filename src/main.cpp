@@ -91,12 +91,10 @@ int main(int argc, int* argv[])
 
 	Batch batch = Batch::Batch();
 
-	//Renderer::Batch batch();
-
 	Renderer renderer = Renderer::Renderer(90.0f, (float)screenWidth / (float)screenHeight);
-	renderer.AddBatch(batch);
+	//renderer.AddBatch(batch);
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	renderer.Render();
 
 	while (!glfwWindowShouldClose(window))
 	{

@@ -8,6 +8,7 @@ class VBO
 public:
 	VBO();
 	VBO(const void* data, unsigned int size);
+	VBO(const void* data);
 	~VBO();
 	void Bind();
 	void Unbind();
@@ -15,4 +16,3 @@ public:
 private:
 	unsigned int id;
 };
-

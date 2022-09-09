@@ -15,10 +15,9 @@ Batch::Batch()
 		1, 2, 3
 	};
 
-	shader = Shader::Shader(".\\default.vert", ".\\defualt.frag");
+	shader = Shader::Shader(".\\default.vert", ".\\default.frag");
 
-	vao = VAO::VAO(); //This is correct
-	std::cout << sizeof(indices);
+	vao = VAO::VAO();
 	vbo = VBO::VBO(vertices, sizeof(vertices));
 	ebo = EBO::EBO(indices, sizeof(indices));
 
@@ -26,6 +25,8 @@ Batch::Batch()
 	vao.SetAttribute(0, 5 * sizeof(float), 0);
 	vao.Enable(1);
 	vao.SetAttribute(1, 5 * sizeof(float), 3);
+
+	//shader.SetMat4("view", );
 
 	texture = Texture::Texture(".\\textures\\grass.png");
 }

@@ -25,14 +25,21 @@ public:
 	{
 		float position[3];
 		float texCoords[2];
-		//float texture; //wouldn't make sense here?!
+		float texture; //wouldn't make sense here?!
+	};
+
+	struct Index
+	{
+		int indices[6];
 	};
 
 	Renderer();
 	Renderer(float fov, float aspect);
 	~Renderer();
-	std::array<Vertex, 4> Quad(float x, float y, float scale);
+	std::array<Renderer::Vertex, 4> Quad(float x, float y, float texID, float scale);
+	Renderer::Index* GenerateIndicesForQuads(int amt);
 	void AddBatch(Batch batch);
+	void Render();
 	void Draw();
 	void DrawTest();
 

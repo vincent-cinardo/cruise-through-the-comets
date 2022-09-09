@@ -12,8 +12,6 @@ public:
 	~EBO();
 	void Bind();
 	void Unbind();
-	int GetCount();
-	int* indices;
 
 private:
 	unsigned int id;
