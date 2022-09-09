@@ -46,4 +46,7 @@ public:
 private:
 	Camera cam;
 	std::vector<Batch> batches;
+	unsigned int vbo, vao, ebo;
+	Shader shader;
+	Texture texture;
 };

@@ -89,7 +89,7 @@ int main(int argc, int* argv[])
 
 	stbi_set_flip_vertically_on_load(true);
 
-	Batch batch = Batch::Batch();
+	//Batch batch = Batch::Batch();
 
 	Renderer renderer = Renderer::Renderer(90.0f, (float)screenWidth / (float)screenHeight);
 	//renderer.AddBatch(batch);
