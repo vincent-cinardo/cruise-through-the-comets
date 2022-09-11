@@ -1,9 +1,5 @@
 #include "Renderer.h"
 
-//Evil globals for testing
-//Batch batch;
-
-
 Renderer::Renderer() 
 {
 	std::cout << "sizeof(Vertex) == " << sizeof(Vertex) << std::endl;
@@ -11,8 +7,6 @@ Renderer::Renderer()
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
 	glm::mat4 projection = glm::perspective(90.0f, (float) 1920/ (float)1080, 1.0f, -12.0f);
 	cam = Camera::Camera(view, projection);
-
-	//Need to make edits, use camera for retrieving view and projection. ADD PROJECTION TO CAMERA CLASS
 }
 
 Renderer::~Renderer()
@@ -70,20 +64,24 @@ std::array<Renderer::Vertex, 4> Renderer::Quad(float x, float y, float texture, 
 }
 
 //Generate an indices array for an ammount of quads. Pairs with the quad function.
-Renderer::Index* Renderer::GenerateIndicesForQuads(int amt)
+std::vector<Renderer::Index> Renderer::GenerateIndicesForQuads(int amt)
 {
 	//DOUBLE CHECK THIS later. Change to array object later on.
 	assert(amt > 0);
-	Renderer::Index *indices = (Renderer::Index *)malloc(amt);
+	std::vector<Renderer::Index> indices;
 	for (int i = 0; i < amt; i++)
 	{
-		int vertex = i * 4;
-		indices[i].indices[0] = 0 + vertex;
-		indices[i].indices[1] = 1 + vertex;
-		indices[i].indices[2] = 2 + vertex;
-		indices[i].indices[3] = 2 + vertex;
-		indices[i].indices[4] = 3 + vertex;
-		indices[i].indices[5] = 0 + vertex;
+		unsigned int vertex = i * 4;
+		Renderer::Index index
+		{
+			0u + vertex,
+			1u + vertex,
+			2u + vertex,
+			2u + vertex,
+			3u + vertex,
+			0u + vertex
+		};
+		indices.push_back(index);
 	}
 	return indices;
 }
@@ -105,14 +103,11 @@ void Renderer::Render()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 1000, nullptr, GL_DYNAMIC_DRAW);
 
-	unsigned int ind[] = {
-		0,1,2,2,3,0,
-		4,5,6,6,7,4
-	};
+	std::vector<Renderer::Index> ind = GenerateIndicesForQuads(24);
 
 	glGenBuffers(1, &ebo);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(ind), ind, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 24 * sizeof(unsigned int), ind.data(), GL_STATIC_DRAW);
 
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)0);
 	glEnableVertexAttribArray(0);
@@ -120,7 +115,6 @@ void Renderer::Render()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(2, 1, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const void*)(5 * sizeof(float)));
 	glEnableVertexAttribArray(2);
-
 	
 	shader.SetMat4("projection", cam.projection);
 	shader.SetMat4("view", cam.view);
@@ -137,16 +131,19 @@ void Renderer::Draw()
 //To test first, let's draw two quads
 void Renderer::DrawTest()
 {
-	std::array<Renderer::Vertex, 4> q0 = Quad(-0.5f, -0.5f, 0.0f, 0.5f);
-	std::array<Renderer::Vertex, 4> q1 = Quad(0.5f, 0.5f, 1.0f, 0.5f);
+	std::array<Renderer::Vertex, 4> q0 = Quad(0.0f, 0.0f, 0.0f, 1.0f);
+	std::array<Renderer::Vertex, 4> q1 = Quad(0.0f, 1.0f, 1.0f, 1.0f);
+	std::array<Renderer::Vertex, 4> q2 = Quad(1.0f, 0.0f, 0.0f, 1.0f);
+	std::array<Renderer::Vertex, 4> q3 = Quad(1.0f, 1.0f, 0.0f, 1.0f);
 
-	Vertex vertices[8];
-	memcpy(vertices, q0.data(), q0.size() * sizeof(Vertex));
-	memcpy(vertices + q0.size(), q1.data(), q1.size() * sizeof(Vertex));
+	Vertex vertices[16];
+	memcpy(vertices, q0.data(), 4 * sizeof(Vertex));
+	memcpy(vertices + 4, q1.data(), 4 * sizeof(Vertex));
+	memcpy(vertices + 8, q2.data(), 4 * sizeof(Vertex));
+	memcpy(vertices + 12, q3.data(), 4 * sizeof(Vertex));
 
 	shader.Use();
 	glBindVertexArray(vao);
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
-	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, nullptr);
-
+	glDrawElements(GL_TRIANGLES, 32, GL_UNSIGNED_INT, nullptr);
 }

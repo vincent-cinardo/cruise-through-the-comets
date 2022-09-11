@@ -20,7 +20,6 @@
 class Renderer
 {
 public:
-
 	struct Vertex
 	{
 		float position[3];
@@ -30,14 +29,14 @@ public:
 
 	struct Index
 	{
-		int indices[6];
+		unsigned int indices[6];
 	};
 
 	Renderer();
 	Renderer(float fov, float aspect);
 	~Renderer();
 	std::array<Renderer::Vertex, 4> Quad(float x, float y, float texID, float scale);
-	Renderer::Index* GenerateIndicesForQuads(int amt);
+	std::vector<Index> GenerateIndicesForQuads(int amt);
 	void AddBatch(Batch batch);
 	void Render();
 	void Draw();
