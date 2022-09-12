@@ -120,7 +120,7 @@ void Renderer::Render()
 	shader.SetMat4("view", cam.view);
 	shader.SetMat4("model", glm::mat4(1.0f));
 
-	texture = Texture::Texture(".\\textures\\grass.png");
+	texture = Texture::Texture(".\\textures\\grass.png", false);
 }
 
 void Renderer::Draw()

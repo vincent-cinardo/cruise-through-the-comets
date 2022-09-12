@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "Shader.h"
+#include "ResourceManager.h"
 
 enum GameState {
 	Active,

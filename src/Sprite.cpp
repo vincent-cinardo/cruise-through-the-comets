@@ -39,7 +39,7 @@ Sprite::Sprite()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
 
-	texture = Texture::Texture(".\\textures\\stick.png");
+	texture = Texture::Texture(".\\textures\\stick.png", true);
 	shaderPtr = &shader;
 	texturePtr = &texture;
 }

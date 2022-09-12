@@ -28,7 +28,7 @@ Batch::Batch()
 
 	//shader.SetMat4("view", );
 
-	texture = Texture::Texture(".\\textures\\grass.png");
+	texture = Texture::Texture(".\\textures\\grass.png", false);
 }
 
 Batch::~Batch()

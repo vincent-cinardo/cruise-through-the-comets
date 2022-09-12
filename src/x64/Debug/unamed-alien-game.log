@@ -1,2 +1,6 @@
-﻿  GameObject.cpp
+﻿  Ground.cpp
+  Texture.cpp
+C:\Users\vmc4\Projects\unamed-alien-game\src\Texture.cpp(35,60): warning C4244: 'argument': conversion from 'float' to 'GLenum', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\Texture.cpp(35,34): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+  Generating Code...
   unamed-alien-game.vcxproj -> C:\Users\vmc4\Projects\unamed-alien-game\x64\Debug\unamed-alien-game.exe

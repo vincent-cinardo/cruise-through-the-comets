@@ -8,7 +8,13 @@ Game::Game()
 
 Game::~Game()
 {
+	
+}
 
+void Game::Init()
+{
+	ResourceManager::LoadShader(".\\default.vert", ".\\default.frag", "default");
+	ResourceManager::LoadTexture(".\\textures\\grass.png", false, "grass");
 }
 
 void Game::ProcessInput(float deltaTime)

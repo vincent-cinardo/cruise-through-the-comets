@@ -44,7 +44,7 @@ Ground::Ground()
 	glEnableVertexAttribArray(1);
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 
-	texture = Texture::Texture(".\\textures\\grass.png");
+	texture = Texture::Texture(".\\textures\\grass.png", false);
 	shaderPtr = &shader;
 	texturePtr = &texture;
 }

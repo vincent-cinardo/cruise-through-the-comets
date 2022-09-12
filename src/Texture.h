@@ -11,11 +11,10 @@ class Texture
 public:
 	Texture();
 	~Texture();
-	Texture(const char* path);
+	Texture(const char* path, bool alpha);
+	GLuint GetTexture();
 	void Use();
-
-private:
-	
 	GLuint texture;
+	float internal_format = GL_RGB, image_format = GL_RGB;
 };
 
