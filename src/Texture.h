@@ -12,9 +12,10 @@ public:
 	Texture();
 	~Texture();
 	Texture(const char* path, bool alpha);
-	GLuint GetTexture();
+	unsigned int GetTexture();
 	void Use();
-	GLuint texture;
-	float internal_format = GL_RGB, image_format = GL_RGB;
+	unsigned int texture;
+	float internal_format, image_format;
+	const char* filepath;
 };
 

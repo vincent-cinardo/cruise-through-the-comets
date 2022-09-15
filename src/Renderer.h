@@ -42,6 +42,8 @@ public:
 	void Draw();
 	void DrawTest();
 
+	void DrawSprite(Texture& texture, glm::vec2 position, glm::vec2 size);
+
 private:
 	Camera cam;
 	std::vector<Batch> batches;

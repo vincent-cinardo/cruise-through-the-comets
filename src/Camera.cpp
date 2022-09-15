@@ -4,10 +4,9 @@
 Camera::Camera() 
 {
 	view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -10.0f));
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, 4.0f));
 	fov = 90.0f;
-	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
-	glm::mat4 projection = glm::perspective(90.0f, 1920.0f/1080.0f, 0.1f, -10.0f);
+	glm::mat4 projection = glm::perspective(fov, 1920.0f/1080.0f, 0.1f, -8.0f);
 }
 
 Camera::Camera(glm::mat4 view, glm::mat4 projection)
@@ -15,7 +14,6 @@ Camera::Camera(glm::mat4 view, glm::mat4 projection)
 	this->view = view;
 	this->projection = projection;
 	fov = 90.0f;
-	std::cout << "View: " << std::endl << glm::to_string(view) << std::endl;
 }
 
 //Specify a camera at a certain position
@@ -26,7 +24,7 @@ Camera::Camera(float x, float y, float z)
 		glm::vec3(0.0f, 0.0f, 0.0f),
 		glm::vec3(0.0f, 1.0f, 0.0f)
 	);
-	projection = glm::perspective(90.0f, 1920.0f/1080.0f, 0.1f, -10.0f);
+	projection = glm::perspective(30.0f, 1920.0f/1080.0f, 0.1f, -8.0f);
 }
 
 Camera::~Camera() {}
@@ -44,7 +42,6 @@ void Camera::Zoom(float fovAmt, float aspect, unsigned int shaderProgram)
 	glm::mat4 projection = glm::perspective(
 		this->fov, aspect, 0.1f, 30.0f
 	);
-
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
 

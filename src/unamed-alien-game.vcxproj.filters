@@ -33,7 +33,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Sprite.cpp">
+    <ClCompile Include="SpriteRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
@@ -83,7 +83,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sprite.h">
+    <ClInclude Include="SpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
@@ -143,6 +143,12 @@
       <Filter>Shaders\Vert</Filter>
     </None>
     <None Include="ground.frag">
+      <Filter>Shaders\Frag</Filter>
+    </None>
+    <None Include="character.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="character.frag">
       <Filter>Shaders\Frag</Filter>
     </None>
   </ItemGroup>

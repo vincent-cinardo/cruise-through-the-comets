@@ -1,8 +1,8 @@
 #include <iostream>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Game.h"
 #include "Shader.h"
-#include "Sprite.h"
 #include "Texture.h"
 #include "Ground.h"
 #include "Renderer.h"
@@ -89,10 +89,11 @@ int main(int argc, int* argv[])
 
 	stbi_set_flip_vertically_on_load(true);
 
-	//Batch batch = Batch::Batch();
+	Game game = Game::Game();
+
+	game.Init();
 
 	Renderer renderer = Renderer::Renderer(90.0f, (float)screenWidth / (float)screenHeight);
-	//renderer.AddBatch(batch);
 
 	renderer.Render();
 
@@ -103,12 +104,17 @@ int main(int argc, int* argv[])
 		
 		//Input
 		processInput(window);
+		game.ProcessInput(deltaTime);
+
+		//Update
+		game.Update(deltaTime);
 
 		//Render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-
 		renderer.DrawTest(); //Need to get this to work.
+		game.Render();
+		std::cout << glGetError() << std::endl;
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

@@ -147,3 +147,8 @@ void Renderer::DrawTest()
 	glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(vertices), vertices);
 	glDrawElements(GL_TRIANGLES, 32, GL_UNSIGNED_INT, nullptr);
 }
+
+void Renderer::DrawSprite(Texture &texture, glm::vec2 position, glm::vec2 size)
+{
+	
+}
