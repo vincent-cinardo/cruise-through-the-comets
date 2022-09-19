@@ -7,7 +7,7 @@ Texture::Texture()
 
 Texture::~Texture()
 {
-	glDeleteTextures(1, &this->texture);
+	//glDeleteTextures(1, &this->texture);
 }
 
 Texture::Texture(const char* path, bool alpha)
@@ -20,10 +20,8 @@ Texture::Texture(const char* path, bool alpha)
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	std::cout << "Texture value assgined " << texture << std::endl;
 
 	if (alpha)
 	{
@@ -56,7 +54,6 @@ unsigned int Texture::GetTexture()
 
 void Texture::Use()
 {
-	std::cout << "The filepath for the texture is: " << filepath << std::endl;
 	glBindTexture(GL_TEXTURE_2D, texture);
 }
 

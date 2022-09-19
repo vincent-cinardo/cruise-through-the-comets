@@ -103,3 +103,8 @@ Shader& Shader::SetMat4(const char* name, glm::mat4 values)
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name), 1, GL_FALSE, glm::value_ptr(values));
 	return *this;
 }
+
+void Shader::SetInteger(const char* name, unsigned int value)
+{
+	glUniform1i(glGetUniformLocation(shaderProgram, name), value);
+}

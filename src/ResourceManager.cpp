@@ -20,7 +20,7 @@ Texture ResourceManager::LoadTexture(const char* file, bool alpha, std::string n
 	return textures[name];
 }
 
-Texture ResourceManager::GetTexture(std::string name)
+Texture& ResourceManager::GetTexture(std::string name)
 {
 	return textures[name];
 }

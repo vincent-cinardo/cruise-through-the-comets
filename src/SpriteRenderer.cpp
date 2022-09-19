@@ -104,17 +104,15 @@ void SpriteRenderer::Draw()
 }
 
 //New draw call to be tested
-void SpriteRenderer::Draw(Texture texture, glm::vec3 position)
+void SpriteRenderer::Draw(Texture &texture, glm::vec3 position)
 {
 	shader.Use();	
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, position);
 	shader.SetMat4("model", model);
 	
-	//UNCOMMENT LATER, trying to draw without texture for now
-	//glActiveTexture(GL_TEXTURE0);
-	//texture.Use(); 
-
+	glActiveTexture(GL_TEXTURE0);
+	texture.Use(); 
 	glBindVertexArray(vao);
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);

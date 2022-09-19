@@ -16,7 +16,7 @@ public:
 	~SpriteRenderer();
 	void Draw();
 	void Move(float x, float y);
-	void Draw(Texture texture, glm::vec3 position);
+	void Draw(Texture &texture, glm::vec3 position);
 	unsigned int GetProgram();
 
 private:

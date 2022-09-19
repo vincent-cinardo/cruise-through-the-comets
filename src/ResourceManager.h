@@ -11,7 +11,7 @@ public:
 	static Shader LoadShader(const char* vshader, const char* fshader, std::string name);
 	static Shader GetShader(std::string name);
 	static Texture LoadTexture(const char* file, bool alpha, std::string name);
-	static Texture GetTexture(std::string name);
+	static Texture& GetTexture(std::string name);
 	static void Clear();
 	static std::map<std::string, Shader> shaders;
 	static std::map<std::string, Texture> textures;

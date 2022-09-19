@@ -30,6 +30,7 @@ void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
 	inputZ = yoffset;
 }
 
+/*
 void processInput(GLFWwindow* window)
 {
 	inputX = 0.0f;
@@ -50,7 +51,7 @@ void processInput(GLFWwindow* window)
 	{
 		inputX += 1.0f;
 	}
-}
+}*/
 
 void frame_buffer_callback(GLFWwindow* window, int width, int height)
 {
@@ -84,8 +85,9 @@ int main(int argc, int* argv[])
 
 	glViewport(0, 0, screenWidth, screenHeight);
 
-	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
-	glfwSetScrollCallback(window, scroll_call_back);
+	//THESE WILL NOW BE SET IN THE CONTROLLER CLASS DELETE WHEN DONE
+	//glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
+	//glfwSetScrollCallback(window, scroll_call_back);
 
 	stbi_set_flip_vertically_on_load(true);
 
@@ -114,13 +116,13 @@ int main(int argc, int* argv[])
 		glClear(GL_COLOR_BUFFER_BIT);
 		renderer.DrawTest(); //Need to get this to work.
 		game.Render();
-		std::cout << glGetError() << std::endl;
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
 	renderer.~Renderer();
+	ResourceManager::Clear();
 	glfwTerminate();
 	return 0;
 }

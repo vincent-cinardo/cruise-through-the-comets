@@ -21,6 +21,7 @@ public:
 	void SetModel(float x, float y);
 	unsigned int GetProgram();
 	Shader& SetMat4(const char* name, glm::mat4 matrix);
+	void SetInteger(const char* name, unsigned int value);
 	unsigned int shaderProgram;
 	
 private:

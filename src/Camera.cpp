@@ -4,9 +4,9 @@
 Camera::Camera() 
 {
 	view = glm::mat4(1.0f);
-	view = glm::translate(view, glm::vec3(0.0f, 0.0f, 4.0f));
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
 	fov = 90.0f;
-	glm::mat4 projection = glm::perspective(fov, 1920.0f/1080.0f, 0.1f, -8.0f);
+	projection = glm::perspective(fov, 1920.0f/1080.0f, 0.1f, -8.0f);
 }
 
 Camera::Camera(glm::mat4 view, glm::mat4 projection)
