@@ -1,4 +1,7 @@
 #pragma once
+#include "Controller.h"
+#include "ResourceManager.h"
+
 class Glooper
 {
 public:
@@ -7,8 +10,12 @@ public:
 	void Move(float dx, float dy);
 	void Hurt();
 	void Die();
+	float GetX();
+	float GetY();
+	Texture& GetSprite();
 private:
 	int health;
 	float x, y;
+	Texture currentTexture;
 };
 

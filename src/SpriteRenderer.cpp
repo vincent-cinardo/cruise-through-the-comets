@@ -103,7 +103,7 @@ void SpriteRenderer::Draw()
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
 
-//New draw call to be tested
+//New draw call to be tested; works, moving on to spritesheet
 void SpriteRenderer::Draw(Texture &texture, glm::vec3 position)
 {
 	shader.Use();	
@@ -113,6 +113,21 @@ void SpriteRenderer::Draw(Texture &texture, glm::vec3 position)
 	
 	glActiveTexture(GL_TEXTURE0);
 	texture.Use(); 
+	glBindVertexArray(vao);
+
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+}
+
+//Newest draw call, drawing from a sprite sheet
+void SpriteRenderer::Draw(Texture& texture, glm::vec3 position, glm::vec2 bottomleft)
+{
+	shader.Use();
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, position);
+	shader.SetMat4("model", model);
+
+	glActiveTexture(GL_TEXTURE0);
+	texture.Use();
 	glBindVertexArray(vao);
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);

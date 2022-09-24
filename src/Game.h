@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "Glooper.h"
 #include "Controller.h"
+#include "BackgroundRenderer.h"
 
 enum GameState {
 	Active,
@@ -29,5 +30,6 @@ private:
 	unsigned int width, height;
 	Glooper glooper;
 	SpriteRenderer *renderer;
+	BackgroundRenderer *backgroundRenderer;
 };
 

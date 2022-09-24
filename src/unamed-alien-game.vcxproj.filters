@@ -81,6 +81,12 @@
     <ClCompile Include="Glooper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpriteRenderer.h">
@@ -131,6 +137,12 @@
     <ClInclude Include="Glooper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -149,6 +161,15 @@
       <Filter>Shaders\Vert</Filter>
     </None>
     <None Include="character.frag">
+      <Filter>Shaders\Frag</Filter>
+    </None>
+    <None Include="spritesheet.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="background.vert">
+      <Filter>Shaders\Vert</Filter>
+    </None>
+    <None Include="background.frag">
       <Filter>Shaders\Frag</Filter>
     </None>
   </ItemGroup>

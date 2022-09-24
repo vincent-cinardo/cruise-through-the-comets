@@ -5,15 +5,6 @@ Game::Game()
 	width = 1920u;
 	height = 1080u;
 	camera = Camera::Camera();
-	glooper = Glooper::Glooper();
-}
-
-Game::Game(GLFWwindow *window)
-{
-	width = 1920u;
-	height = 1080u;
-	camera = Camera::Camera();
-	glooper = Glooper::Glooper();
 }
 
 Game::~Game()
@@ -36,7 +27,14 @@ void Game::Init()
 	/// Will need to set ground uniforms
 
 	ResourceManager::LoadTexture(".\\textures\\stick.png", true, "stick");
+	ResourceManager::LoadTexture(".\\textures\\stick1.png", true, "stick1");
+	ResourceManager::LoadTexture(".\\textures\\stick2.png", true, "stick2");
+	ResourceManager::LoadTexture(".\\textures\\stick3.png", true, "stick3");
+	ResourceManager::LoadTexture(".\\textures\\background.jpg", true, "background");
 	renderer = new SpriteRenderer(ResourceManager::GetShader("character"));
+	backgroundRenderer = new BackgroundRenderer(ResourceManager::GetShader("background"));
+	glooper = Glooper::Glooper();
+	
 	//ResourceManager::GetShader("default").Use();
 }
 
@@ -48,10 +46,11 @@ void Game::ProcessInput(GLFWwindow* window, float deltaTime)
 void Game::Update(float deltaTime)
 {
 
-	//glooper.Move(,);
+	glooper.Move(Controller::inputX * 0.01f, Controller::inputY * 0.01f);
 }
 
 void Game::Render()
 {
-	renderer->Draw(ResourceManager::GetTexture("stick"), glm::vec3(-2.0f, 0.0f, 0.0f));
+	backgroundRenderer->Render();
+	renderer->Draw(glooper.GetSprite(), glm::vec3(glooper.GetX(), glooper.GetY(), 0.0f));
 }

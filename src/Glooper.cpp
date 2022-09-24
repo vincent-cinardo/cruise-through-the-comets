@@ -5,6 +5,7 @@ Glooper::Glooper()
 	health = 3;
 	x = 0;
 	y = 0;
+	currentTexture = ResourceManager::GetTexture("stick");
 }
 
 Glooper::~Glooper()
@@ -29,4 +30,33 @@ void Glooper::Hurt()
 void Glooper::Die()
 {
 
+}
+
+float Glooper::GetX()
+{
+	return x;
+}
+
+float Glooper::GetY()
+{
+	return y;
+}
+
+Texture& Glooper::GetSprite()
+{
+	//Y input takes precedence
+
+	if (Controller::inputY != 0)
+	{
+		currentTexture = (Controller::inputY == 1) ? ResourceManager::GetTexture("stick") : ResourceManager::GetTexture("stick2");
+		return currentTexture;
+	}
+
+	if (Controller::inputX != 0)
+	{
+		currentTexture = (Controller::inputX == 1) ? ResourceManager::GetTexture("stick1") : ResourceManager::GetTexture("stick3");
+		return currentTexture;
+	}
+
+	return currentTexture;
 }

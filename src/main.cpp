@@ -105,8 +105,8 @@ int main(int argc, int* argv[])
 		lastTime = glfwGetTime();
 		
 		//Input
-		processInput(window);
-		game.ProcessInput(deltaTime);
+		//processInput(window);
+		game.ProcessInput(window, deltaTime);
 
 		//Update
 		game.Update(deltaTime);

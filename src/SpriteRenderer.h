@@ -17,6 +17,7 @@ public:
 	void Draw();
 	void Move(float x, float y);
 	void Draw(Texture &texture, glm::vec3 position);
+	void Draw(Texture& texture, glm::vec3 position, glm::vec2 bottomleft);
 	unsigned int GetProgram();
 
 private:
