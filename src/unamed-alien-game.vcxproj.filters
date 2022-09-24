@@ -166,11 +166,11 @@
     <None Include="spritesheet.vert">
       <Filter>Shaders\Vert</Filter>
     </None>
-    <None Include="background.vert">
-      <Filter>Shaders\Vert</Filter>
-    </None>
     <None Include="background.frag">
       <Filter>Shaders\Frag</Filter>
+    </None>
+    <None Include="background.vert">
+      <Filter>Shaders\Vert</Filter>
     </None>
   </ItemGroup>
 </Project>
