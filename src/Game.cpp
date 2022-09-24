@@ -23,6 +23,7 @@ void Game::Init()
 	ResourceManager::shaders["character"].Use();
 	ResourceManager::shaders["character"].SetMat4("projection", camera.projection);
 	ResourceManager::shaders["character"].SetMat4("view", camera.view);
+	ResourceManager::LoadShader("\\background.vert", "\\background.frag", "background");
 	//ResourceManager::shaders["character"].SetMat4("view", camera.view);
 	/// Will need to set ground uniforms
 
