@@ -142,6 +142,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AsteroidField.cpp" />
+    <ClCompile Include="Astroid.cpp" />
     <ClCompile Include="BackgroundRenderer.cpp" />
     <ClCompile Include="Batch.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -163,6 +165,8 @@
     <ClCompile Include="VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AsteroidField.h" />
+    <ClInclude Include="Astroid.h" />
     <ClInclude Include="BackgroundRenderer.h" />
     <ClInclude Include="Batch.h" />
     <ClInclude Include="Camera.h" />

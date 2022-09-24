@@ -23,20 +23,16 @@ void Game::Init()
 	ResourceManager::shaders["character"].Use();
 	ResourceManager::shaders["character"].SetMat4("projection", camera.projection);
 	ResourceManager::shaders["character"].SetMat4("view", camera.view);
-	ResourceManager::LoadShader("\\background.vert", "\\background.frag", "background");
-	//ResourceManager::shaders["character"].SetMat4("view", camera.view);
-	/// Will need to set ground uniforms
+	ResourceManager::LoadShader(".\\background.vert", ".\\background.frag", "background");
 
 	ResourceManager::LoadTexture(".\\textures\\stick.png", true, "stick");
 	ResourceManager::LoadTexture(".\\textures\\stick1.png", true, "stick1");
 	ResourceManager::LoadTexture(".\\textures\\stick2.png", true, "stick2");
 	ResourceManager::LoadTexture(".\\textures\\stick3.png", true, "stick3");
-	ResourceManager::LoadTexture(".\\textures\\background.jpg", true, "background");
+	ResourceManager::LoadTexture(".\\textures\\background.jpg", false, "background");
 	renderer = new SpriteRenderer(ResourceManager::GetShader("character"));
 	backgroundRenderer = new BackgroundRenderer(ResourceManager::GetShader("background"));
 	glooper = Glooper::Glooper();
-	
-	//ResourceManager::GetShader("default").Use();
 }
 
 void Game::ProcessInput(GLFWwindow* window, float deltaTime)
