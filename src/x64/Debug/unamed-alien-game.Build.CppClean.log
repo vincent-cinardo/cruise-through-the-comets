@@ -17,8 +17,10 @@ c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\ebo.obj
 c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\controller.obj
 c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\camera.obj
 c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\batch.obj
-c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\glad.obj
 c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\backgroundrenderer.obj
+c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\glad.obj
+c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\asteroidfield.obj
+c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\asteroid.obj
 c:\users\vmc4\projects\unamed-alien-game\x64\debug\unamed-alien-game.exe
 c:\users\vmc4\projects\unamed-alien-game\src\x64\debug\unamed-alien-game.ilk
 c:\users\vmc4\projects\unamed-alien-game\x64\debug\unamed-alien-game.pdb

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include "Asteroid.h"
 
 class AsteroidField
@@ -7,7 +8,8 @@ class AsteroidField
 public:
 	AsteroidField();
 	void SpawnAsteroid();
+	void UpdateAsteroids(float dt);
 private:
-	std::vector<Asteroid> astroids;
+	std::vector<Asteroid *> asteroids;
 };
 

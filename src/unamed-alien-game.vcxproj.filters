@@ -90,7 +90,7 @@
     <ClCompile Include="AsteroidField.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Astroid.cpp">
+    <ClCompile Include="Asteroid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,7 +152,7 @@
     <ClInclude Include="AsteroidField.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Astroid.h">
+    <ClInclude Include="Asteroid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

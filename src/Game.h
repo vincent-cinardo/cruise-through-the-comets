@@ -7,6 +7,7 @@
 #include "Glooper.h"
 #include "Controller.h"
 #include "BackgroundRenderer.h"
+#include "AsteroidField.h"
 
 enum GameState {
 	Active,
@@ -29,6 +30,7 @@ public:
 private:
 	unsigned int width, height;
 	Glooper glooper;
+	AsteroidField asteroidField;
 	SpriteRenderer *renderer;
 	BackgroundRenderer *backgroundRenderer;
 };
