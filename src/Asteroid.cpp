@@ -1,5 +1,4 @@
 #include "Asteroid.h"
-#include "AsteroidField.h"
 
 //Spawn an asteroid offscreen, which shoots at a random time and a random angle in degrees. It will be deleted after 10 seconds.
 Asteroid::Asteroid()
@@ -7,29 +6,6 @@ Asteroid::Asteroid()
 	ttl = 10.0f;
 	srand(std::time(nullptr));
 	int num = (int) rand() % 4;
-
-	switch (num)
-	{
-	case 0:
-		SpawnNorth();
-		break;
-	case 1:
-		SpawnSouth();
-		break;
-	case 2:
-		SpawnEast();
-		break;
-	case 3:
-		SpawnWest();
-		break;
-	}
-}
-
-Asteroid::Asteroid(AsteroidField *asteroidField)
-{
-	ttl = 10.0f;
-	srand(std::time(nullptr));
-	int num = (int)rand() % 4;
 
 	switch (num)
 	{

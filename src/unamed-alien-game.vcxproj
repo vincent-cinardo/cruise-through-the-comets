@@ -166,7 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsteroidField.h" />
-    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="Asteroid.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="BackgroundRenderer.h" />
     <ClInclude Include="Batch.h" />
     <ClInclude Include="Camera.h" />

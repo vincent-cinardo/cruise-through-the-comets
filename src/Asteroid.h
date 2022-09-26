@@ -1,13 +1,11 @@
 #pragma once
 #include <cstdlib>
 #include <ctime>
-#include "AsteroidField.h"
 
 class Asteroid
 {
 public:
 	Asteroid();
-	Asteroid(AsteroidField *asteroidField);
 	void Update(float dt);
 	void Move(float dt);
 	void Hit();
@@ -17,6 +15,5 @@ public:
 	void SpawnWest();
 private:
 	float x, y, angle, ttl;
-	AsteroidField* asteroidField;
 };
 
