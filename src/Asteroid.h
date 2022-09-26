@@ -6,8 +6,7 @@
 class Asteroid
 {
 public:
-	Asteroid(); 
-	Asteroid(AsteroidField* asteroidField);
+	Asteroid();
 	void Update(float dt);
 	void Move(float dt);
 	void Hit();

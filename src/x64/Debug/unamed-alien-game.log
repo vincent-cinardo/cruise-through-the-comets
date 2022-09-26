@@ -1,47 +1,17 @@
 ﻿  AsteroidField.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(10,11): error C2061: syntax error: identifier 'AsteroidField'
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(10,10): error C2535: 'Asteroid::Asteroid(void)': member function already defined or declared
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(9): message : see declaration of 'Asteroid::Asteroid'
   Asteroid.cpp
 C:\Users\vmc4\Projects\unamed-alien-game\src\AsteroidField.h(13,14): error C2065: 'Asteroid': undeclared identifier
 C:\Users\vmc4\Projects\unamed-alien-game\src\AsteroidField.h(13,24): error C2059: syntax error: '>'
 C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(7,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(29,8): error C2039: 'asteroidField': is not a member of 'Asteroid'
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(6): message : see declaration of 'Asteroid'
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(31,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(72,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(88,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(103,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(118,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  BackgroundRenderer.cpp
-  Batch.cpp
-  Camera.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Camera.cpp(1,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Controller.cpp
-  EBO.cpp
+C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(48,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(64,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(79,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.cpp(94,17): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Game.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(10,11): error C2061: syntax error: identifier 'AsteroidField'
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(10,10): error C2535: 'Asteroid::Asteroid(void)': member function already defined or declared
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(9): message : see declaration of 'Asteroid::Asteroid'
-  GameObject.cpp
-  Glooper.cpp
-  Ground.cpp
   main.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(10,11): error C2061: syntax error: identifier 'AsteroidField'
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(10,10): error C2535: 'Asteroid::Asteroid(void)': member function already defined or declared
-C:\Users\vmc4\Projects\unamed-alien-game\src\Asteroid.h(9): message : see declaration of 'Asteroid::Asteroid'
 C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(30,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(104,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\vmc4\Projects\unamed-alien-game\src\main.cpp(105,25): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Renderer.cpp
-  ResourceManager.cpp
-  Shader.cpp
-  SpriteRenderer.cpp
-  stbi_image.cpp
-  Texture.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\Texture.cpp(39,60): warning C4244: 'argument': conversion from 'float' to 'GLenum', possible loss of data
-C:\Users\vmc4\Projects\unamed-alien-game\src\Texture.cpp(39,34): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-  VAO.cpp
-C:\Users\vmc4\Projects\unamed-alien-game\src\VAO.cpp(32,93): warning C4312: 'type cast': conversion from 'int' to 'void *' of greater size
   VBO.cpp
   Generating Code...
