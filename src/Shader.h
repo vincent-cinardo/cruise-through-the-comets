@@ -23,7 +23,6 @@ public:
 	Shader& SetMat4(const char* name, glm::mat4 matrix);
 	void SetInteger(const char* name, unsigned int value);
 	unsigned int shaderProgram;
-	
 private:
 	unsigned int vertShader, fragShader;
 };

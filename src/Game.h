@@ -32,6 +32,6 @@ private:
 	Glooper glooper;
 	AsteroidField asteroidField;
 	SpriteRenderer *renderer;
-	BackgroundRenderer *backgroundRenderer;
+	BackgroundRenderer backgroundRenderer;
 };
 

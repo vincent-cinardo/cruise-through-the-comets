@@ -9,7 +9,7 @@ Game::Game()
 
 Game::~Game()
 {
-	
+
 }
 
 void Game::Init()
@@ -24,15 +24,20 @@ void Game::Init()
 	ResourceManager::shaders["character"].SetMat4("projection", camera.projection);
 	ResourceManager::shaders["character"].SetMat4("view", camera.view);
 	ResourceManager::LoadShader(".\\background.vert", ".\\background.frag", "background");
+	ResourceManager::LoadShader(".\\asteroid.vert", ".\\asteroid.frag", "asteroid");
+	ResourceManager::shaders["asteroid"].SetMat4("projection", camera.projection);
+	ResourceManager::shaders["asteroid"].SetMat4("view", camera.view);
 
+	ResourceManager::LoadTexture(".\\textures\\asteroid.png", false, "asteroid");
 	ResourceManager::LoadTexture(".\\textures\\stick.png", true, "stick");
 	ResourceManager::LoadTexture(".\\textures\\stick1.png", true, "stick1");
 	ResourceManager::LoadTexture(".\\textures\\stick2.png", true, "stick2");
 	ResourceManager::LoadTexture(".\\textures\\stick3.png", true, "stick3");
 	ResourceManager::LoadTexture(".\\textures\\background.jpg", false, "background");
 	renderer = new SpriteRenderer(ResourceManager::GetShader("character"));
-	backgroundRenderer = new BackgroundRenderer(ResourceManager::GetShader("background"));
+	backgroundRenderer = BackgroundRenderer::BackgroundRenderer(ResourceManager::GetShader("background"));
 	glooper = Glooper::Glooper();
+	asteroidField = AsteroidField::AsteroidField();
 }
 
 void Game::ProcessInput(GLFWwindow* window, float deltaTime)
@@ -42,12 +47,13 @@ void Game::ProcessInput(GLFWwindow* window, float deltaTime)
 
 void Game::Update(float deltaTime)
 {
-
-	glooper.Move(Controller::inputX * 0.01f, Controller::inputY * 0.01f);
+	glooper.Move(Controller::inputX * deltaTime * 10.0f, Controller::inputY * deltaTime * 10.0f);
+	asteroidField.UpdateAsteroids(deltaTime);
 }
 
 void Game::Render()
 {
-	backgroundRenderer->Render();
+	backgroundRenderer.Render();
 	renderer->Draw(glooper.GetSprite(), glm::vec3(glooper.GetX(), glooper.GetY(), 0.0f));
+	asteroidField.Render(renderer);
 }

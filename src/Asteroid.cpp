@@ -1,25 +1,45 @@
 #include "Asteroid.h"
 
-//Spawn an asteroid offscreen, which shoots at a random time and a random angle in degrees. It will be deleted after 10 seconds.
+//Spawn an asteroid offscreen, which shoots in a random direction towards the center. It will be deleted after 10 seconds.
 Asteroid::Asteroid()
 {
 	ttl = 10.0f;
-	srand(std::time(nullptr));
-	int num = (int) rand() % 4;
+	int num = MathHelper::Random(0, 3);
 
+	//IF THIS RANDOM WORKS, DELETE NEGATE AND PUT A NEGATIVE FOR EVERY MIN
+	angularVel = MathHelper::Random(-25.0f, 25.0f);
+	spriteAngle = MathHelper::Random(-5.0f, 5.0f);
+
+	//Angle in degrees -> randians.
 	switch (num)
 	{
 	case 0:
-		SpawnNorth();
+		//North
+		spawnLoc = "north";
+		y = 11.0f;
+		x = (float)(MathHelper::Random(-5.5f, 5.5f));
+		angle = (270.0f + ((float)(MathHelper::Random(-20, 20)))) * 0.01745329251;
 		break;
 	case 1:
-		SpawnSouth();
+		//South
+		spawnLoc = "south";
+		y = -11.0f;
+		x = (float)(MathHelper::Random(-5.5f, 5.5f));
+		angle = (90.0f + ((float)(MathHelper::Random(-20, 20)))) * 0.01745329251;
 		break;
 	case 2:
-		SpawnEast();
+		//East
+		spawnLoc = "east";
+		x = 11.0f;
+		y = (float)(MathHelper::Random(-5.5f, 5.5f));
+		angle = (180.0f + ((float)(MathHelper::Random(-20, 20)))) * 0.01745329251;
 		break;
 	case 3:
-		SpawnWest();
+		//West
+		spawnLoc = "west";
+		x = -11.0f;
+		y = (float)(MathHelper::Random(-5.5f, 5.5f));
+		angle = (((float)(MathHelper::Random(-20, 20)))) * 0.01745329251;
 		break;
 	}
 }
@@ -30,12 +50,12 @@ void Asteroid::Update(float dt)
 	Move(dt);
 }
 
-//Asteroids store angles opposite to their posiition, the direction they will be going towards the center.
+//Move the asteroid towards the center and spin according to the randomly generated angular velocity.
 void Asteroid::Move(float dt)
 {
-	//May want to multiply a magnitude as well
-	x += x * cos(angle) * dt;
-	y += y * sin(angle) * dt;
+	x += 5.0f * cos(angle) * dt;
+	y += 5.0f * sin(angle) * dt;
+	spriteAngle += angularVel * dt;
 }
 
 void Asteroid::Hit()
@@ -43,63 +63,27 @@ void Asteroid::Hit()
 
 }
 
-void Asteroid::SpawnNorth()
+float Asteroid::GetSpriteAngle()
 {
-	srand(std::time(nullptr));
-
-	float factor;
-	int negate = (rand()) % 2;
-	if (negate)
-	{
-		factor = 1.0f;
-	}
-	else factor = -1.0f;
-
-	y = 11.0f;
-	x = (float)(rand() * 11) / (float) RAND_MAX;
-	angle = 270.0f + negate;
+	return spriteAngle;
 }
-void Asteroid::SpawnSouth()
-{
-	srand(std::time(nullptr));
-	float factor;
-	int negate = (rand()) % 2;
-	if (negate)
-	{
-		factor = 1.0f;
-	}
-	else factor = -1.0f;
 
-	y = -11.0f;
-	x = (float)(rand() * 11) / (float)RAND_MAX;
-	angle = 90.0f + ((float)((rand() / RAND_MAX) % 15) * negate);
+float Asteroid::GetAngularVelocity()
+{
+	return angularVel;
 }
-void Asteroid::SpawnEast()
+	
+float Asteroid::GetX()
 {
-	srand(std::time(nullptr));
-	float factor;
-	int negate = (rand()) % 2;
-	if (negate)
-	{
-		factor = 1.0f;
-	}
-	else factor = -1.0f;
-
-	x = 11.0f;
-	y = (float)(rand() * 11) / (float)RAND_MAX;
-	angle = 180.0f + ((float)((rand() / RAND_MAX) % 15) * negate);
+	return x;
 }
-void Asteroid::SpawnWest()
-{
-	srand(std::time(nullptr));
-	float factor;
-	int negate = (rand()) % 2;
-	if (negate)
-	{
-		factor = 1.0f;
-	}
-	else factor = -1.0f;
 
-	x = -11.0f;
-	y = ((float)((rand() / RAND_MAX) % 15) * negate);
+float Asteroid::GetY()
+{
+	return y;
+}
+
+const char* Asteroid::SpawnedFrom()
+{
+	return spawnLoc;
 }

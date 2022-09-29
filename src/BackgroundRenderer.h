@@ -11,7 +11,6 @@ class BackgroundRenderer
 public:
 	BackgroundRenderer(Shader shader);
 	BackgroundRenderer();
-	~BackgroundRenderer();
 	void Render();
 private:
 	Shader shader;

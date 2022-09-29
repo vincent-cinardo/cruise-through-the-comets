@@ -30,29 +30,6 @@ void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
 	inputZ = yoffset;
 }
 
-/*
-void processInput(GLFWwindow* window)
-{
-	inputX = 0.0f;
-	inputY = 0.0f;
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-	{
-		inputY += 1.0f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-	{
-		inputY += -1.0f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-	{
-		inputX += -1.0f;
-	}
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-	{
-		inputX += 1.0f;
-	}
-}*/
-
 void frame_buffer_callback(GLFWwindow* window, int width, int height)
 {
 	screenWidth = width;
