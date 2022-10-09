@@ -58,3 +58,8 @@ void AsteroidField::Render(SpriteRenderer* renderer)
 		renderer->Draw(ResourceManager::GetTexture("asteroid"), glm::vec3(asteroid->GetX(), asteroid->GetY(), 0.0f), asteroid->GetSpriteAngle());
 	}
 }
+
+std::vector<Asteroid*> AsteroidField::GetAsteroids()
+{
+	return asteroids;
+}

@@ -5,6 +5,7 @@ Glooper::Glooper()
 	health = 3;
 	x = 0;
 	y = 0;
+	size = 0.5f;
 	currentTexture = ResourceManager::GetTexture("stick");
 }
 
@@ -40,6 +41,11 @@ float Glooper::GetX()
 float Glooper::GetY()
 {
 	return y;
+}
+
+float Glooper::GetSize()
+{
+	return size;
 }
 
 Texture& Glooper::GetSprite()

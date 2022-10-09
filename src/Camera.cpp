@@ -50,3 +50,8 @@ void Camera::View(float x, float y, unsigned int shaderProgram)
 {
 	glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "view"), 1, GL_FALSE, glm::value_ptr(view));
 }
+
+void Camera::Aspect(float x, float y)
+{
+	projection = glm::perspective(fov, x / y, 0.1f, -8.0f);
+}

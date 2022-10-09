@@ -19,12 +19,15 @@ enum GameState {
 class Game
 {
 public:
+	GameState state;
 	Game();
 	~Game();
 	void Init();
 	void ProcessInput(GLFWwindow *window, float deltaTime);
 	void Update(float deltaTime);
 	void Render();
+	void Collisions();
+	bool CheckCollision(Glooper glooper, Asteroid *asteroid);
 	Camera camera;
 
 private:
@@ -34,4 +37,5 @@ private:
 	SpriteRenderer *renderer;
 	BackgroundRenderer backgroundRenderer;
 };
+
 

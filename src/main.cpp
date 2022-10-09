@@ -5,11 +5,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Ground.h"
-#include "Renderer.h"
 #include "stb_image.h"
-#include "VBO.h"
-#include "VAO.h"
-#include "EBO.h"
 
 //Camera implementation
 #include "Camera.h"
@@ -19,6 +15,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include "main.h"
+
+Game *game;
 
 float lastTime = 0.0f, deltaTime;
 float inputX, inputY, inputZ = 0.0f;
@@ -35,6 +33,7 @@ void frame_buffer_callback(GLFWwindow* window, int width, int height)
 	screenWidth = width;
 	screenHeight = height;
 	glViewport(0, 0, width, height);
+	game->camera.Aspect((float) width, (float) height);
 }
 
 int main(int argc, int* argv[])
@@ -45,6 +44,9 @@ int main(int argc, int* argv[])
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	GLFWwindow* window = glfwCreateWindow(screenHeight, screenHeight, "Alien Game", NULL, NULL);
+	glfwSetWindowSize(window, screenWidth, screenHeight);
+	glfwSetWindowPos(window, 0, 0);
+
 	if (window == NULL)
 	{
 		std::cout << "Window failed to open" << std::endl;
@@ -63,18 +65,18 @@ int main(int argc, int* argv[])
 	glViewport(0, 0, screenWidth, screenHeight);
 
 	//THESE WILL NOW BE SET IN THE CONTROLLER CLASS DELETE WHEN DONE
-	//glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
+	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
 	//glfwSetScrollCallback(window, scroll_call_back);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	stbi_set_flip_vertically_on_load(true);
 
-	Game game = Game::Game();
+	Game theGame = Game::Game();
+	game = &theGame;
 
-	game.Init();
-
-	Renderer renderer = Renderer::Renderer(90.0f, (float)screenWidth / (float)screenHeight);
-
-	renderer.Render();
+	game->Init();
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -83,22 +85,26 @@ int main(int argc, int* argv[])
 		
 		//Input
 		//processInput(window);
-		game.ProcessInput(window, deltaTime);
+		game->ProcessInput(window, deltaTime);
 
 		//Update
-		game.Update(deltaTime);
+		game->Update(deltaTime);
+
+		//May delete this, review after cleanup.
+		if (game->state == GameState::Lose)
+		{
+			glfwSetWindowShouldClose(window, true);
+		}
 
 		//Render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		renderer.DrawTest(); //Need to get this to work.
-		game.Render();
+		game->Render();
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	renderer.~Renderer();
 	ResourceManager::Clear();
 	glfwTerminate();
 	return 0;

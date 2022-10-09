@@ -1,5 +1,6 @@
 #include "Game.h"
 
+
 Game::Game()
 {
 	width = 1920u;
@@ -14,6 +15,7 @@ Game::~Game()
 
 void Game::Init()
 {
+	std::cout << "Loading shaders..." << std::endl;
 	ResourceManager::LoadShader(".\\default.vert", ".\\default.frag", "default");
 	ResourceManager::shaders["default"].Use();
 	ResourceManager::shaders["default"].SetMat4("projection", camera.projection);
@@ -28,7 +30,8 @@ void Game::Init()
 	ResourceManager::shaders["asteroid"].SetMat4("projection", camera.projection);
 	ResourceManager::shaders["asteroid"].SetMat4("view", camera.view);
 
-	ResourceManager::LoadTexture(".\\textures\\asteroid.png", false, "asteroid");
+	std::cout << "Loading textures..." << std::endl;
+	ResourceManager::LoadTexture(".\\textures\\asteroid.png", true, "asteroid");
 	ResourceManager::LoadTexture(".\\textures\\stick.png", true, "stick");
 	ResourceManager::LoadTexture(".\\textures\\stick1.png", true, "stick1");
 	ResourceManager::LoadTexture(".\\textures\\stick2.png", true, "stick2");
@@ -49,6 +52,7 @@ void Game::Update(float deltaTime)
 {
 	glooper.Move(Controller::inputX * deltaTime * 10.0f, Controller::inputY * deltaTime * 10.0f);
 	asteroidField.UpdateAsteroids(deltaTime);
+	Collisions();
 }
 
 void Game::Render()
@@ -56,4 +60,26 @@ void Game::Render()
 	backgroundRenderer.Render();
 	renderer->Draw(glooper.GetSprite(), glm::vec3(glooper.GetX(), glooper.GetY(), 0.0f));
 	asteroidField.Render(renderer);
+}
+
+void Game::Collisions()
+{
+	bool collision = false;
+	for (Asteroid* asteroid : asteroidField.GetAsteroids())
+	{
+		collision = CheckCollision(glooper, asteroid);
+		if (collision)
+		{
+			state = Lose;
+			std::cout << "Asteroid hit!" << std::endl;
+		}
+		collision = false;
+	}
+}
+
+bool Game::CheckCollision(Glooper glooper, Asteroid *asteroid)
+{
+	bool x = glooper.GetX() + glooper.GetSize() >= asteroid->GetX() && asteroid->GetX() + asteroid->GetSize() >= glooper.GetX();
+	bool y = glooper.GetY() + glooper.GetSize() >= asteroid->GetY() && asteroid->GetY() + asteroid->GetSize() >= glooper.GetY();
+	return x && y;
 }

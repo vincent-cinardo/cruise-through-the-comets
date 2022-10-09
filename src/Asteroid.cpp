@@ -3,6 +3,7 @@
 //Spawn an asteroid offscreen, which shoots in a random direction towards the center. It will be deleted after 10 seconds.
 Asteroid::Asteroid()
 {
+	size = 0.8f;
 	ttl = 10.0f;
 	int num = MathHelper::Random(0, 3);
 
@@ -10,7 +11,7 @@ Asteroid::Asteroid()
 	angularVel = MathHelper::Random(-25.0f, 25.0f);
 	spriteAngle = MathHelper::Random(-5.0f, 5.0f);
 
-	//Angle in degrees -> randians.
+	//Angle in degrees -> radians.
 	switch (num)
 	{
 	case 0:
@@ -58,11 +59,6 @@ void Asteroid::Move(float dt)
 	spriteAngle += angularVel * dt;
 }
 
-void Asteroid::Hit()
-{
-
-}
-
 float Asteroid::GetSpriteAngle()
 {
 	return spriteAngle;
@@ -81,6 +77,11 @@ float Asteroid::GetX()
 float Asteroid::GetY()
 {
 	return y;
+}
+
+float Asteroid::GetSize()
+{
+	return size;
 }
 
 const char* Asteroid::SpawnedFrom()

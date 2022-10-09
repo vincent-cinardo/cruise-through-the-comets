@@ -12,10 +12,11 @@ public:
 	void Die();
 	float GetX();
 	float GetY();
+	float GetSize();
 	Texture& GetSprite();
 private:
 	int health;
-	float x, y;
+	float x, y, size;
 	Texture currentTexture;
 };
 

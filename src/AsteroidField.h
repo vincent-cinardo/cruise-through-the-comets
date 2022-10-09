@@ -15,6 +15,7 @@ public:
 	void UpdateAsteroids(float dt);
 	void DeleteAsteroid(Asteroid* asteroid);
 	void Render(SpriteRenderer* renderer);
+	std::vector<Asteroid*> GetAsteroids();
 private:
 	std::vector<Asteroid*> asteroids;
 	float nextAsteroidSpawn;

@@ -13,16 +13,16 @@ public:
 	Asteroid();
 	void Update(float dt);
 	void Move(float dt);
-	void Hit();
 	float GetSpriteAngle();
 	float GetAngularVelocity();
 	float GetX();
 	float GetY();
+	float GetSize();
 	const char* SpawnedFrom();
 	float ttl;
 private:
 	const char* spawnLoc;
-	float x, y, angle, angularVel, spriteAngle;
+	float x, y, angle, angularVel, spriteAngle, size;
 	
 };
 
