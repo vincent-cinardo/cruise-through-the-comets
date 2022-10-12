@@ -51,7 +51,7 @@ void AsteroidField::DeleteAsteroid(Asteroid* asteroid)
 	delete asteroid;
 }
 
-void AsteroidField::Render(SpriteRenderer* renderer)
+void AsteroidField::Render(Renderer* renderer)
 {
 	for (Asteroid* asteroid : asteroids)
 	{

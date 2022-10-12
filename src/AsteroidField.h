@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "Asteroid.h"
+#include "Renderer.h"
 #include "SpriteRenderer.h"
 #include "ResourceManager.h"
 #include "MathHelper.h"
@@ -14,7 +15,7 @@ public:
 	void SpawnAsteroid();
 	void UpdateAsteroids(float dt);
 	void DeleteAsteroid(Asteroid* asteroid);
-	void Render(SpriteRenderer* renderer);
+	void Render(Renderer* renderer);
 	std::vector<Asteroid*> GetAsteroids();
 private:
 	std::vector<Asteroid*> asteroids;

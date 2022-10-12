@@ -108,3 +108,8 @@ void Shader::SetInteger(const char* name, unsigned int value)
 {
 	glUniform1i(glGetUniformLocation(shaderProgram, name), value);
 }
+
+void Shader::SetVector3f(const char* name, glm::vec3 color)
+{
+	glUniform3fv(glGetUniformLocation(shaderProgram, name), 3, glm::value_ptr(color));
+}

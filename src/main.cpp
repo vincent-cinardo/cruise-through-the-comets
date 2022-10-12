@@ -1,14 +1,9 @@
 #include <iostream>
+#include <fstream>
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Game.h"
-#include "Shader.h"
-#include "Texture.h"
-#include "Ground.h"
 #include "stb_image.h"
-
-//Camera implementation
-#include "Camera.h"
 
 //Matrix/vector math
 #include <glm/glm.hpp>
@@ -19,14 +14,7 @@
 Game *game;
 
 float lastTime = 0.0f, deltaTime;
-float inputX, inputY, inputZ = 0.0f;
-unsigned int screenWidth = 1920;
-unsigned int screenHeight = 1080;
-
-void scroll_call_back(GLFWwindow* window, double xoffset, double yoffset)
-{
-	inputZ = yoffset;
-}
+unsigned int screenWidth = 1920, screenHeight = 1080;
 
 void frame_buffer_callback(GLFWwindow* window, int width, int height)
 {
@@ -64,14 +52,14 @@ int main(int argc, int* argv[])
 
 	glViewport(0, 0, screenWidth, screenHeight);
 
-	//THESE WILL NOW BE SET IN THE CONTROLLER CLASS DELETE WHEN DONE
 	glfwSetFramebufferSizeCallback(window, frame_buffer_callback);
-	//glfwSetScrollCallback(window, scroll_call_back);
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	stbi_set_flip_vertically_on_load(true);
+
+	Controller::Init(window);
 
 	Game theGame = Game::Game();
 	game = &theGame;
@@ -84,17 +72,10 @@ int main(int argc, int* argv[])
 		lastTime = glfwGetTime();
 		
 		//Input
-		//processInput(window);
 		game->ProcessInput(window, deltaTime);
 
 		//Update
-		game->Update(deltaTime);
-
-		//May delete this, review after cleanup.
-		if (game->state == GameState::Lose)
-		{
-			glfwSetWindowShouldClose(window, true);
-		}
+		game->Update(window, deltaTime);
 
 		//Render
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);

@@ -22,6 +22,7 @@ public:
 	unsigned int GetProgram();
 	Shader& SetMat4(const char* name, glm::mat4 matrix);
 	void SetInteger(const char* name, unsigned int value);
+	void SetVector3f(const char* name, glm::vec3 color);
 	unsigned int shaderProgram;
 private:
 	unsigned int vertShader, fragShader;

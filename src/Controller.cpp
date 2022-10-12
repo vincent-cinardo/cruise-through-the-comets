@@ -2,10 +2,18 @@
 
 float Controller::inputX = 0.0f;
 float Controller::inputY = 0.0f;
+float Controller::MouseX = 0.0f;
+float Controller::MouseY = 0.0f;
 
-void Controller::Init()
+void Controller::cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
 {
-	//Not used, delete if not used in future.
+	MouseX = (float) xpos;
+	MouseY = (float) ypos;
+}
+
+void Controller::Init(GLFWwindow *window)
+{
+	glfwSetCursorPosCallback(window, cursor_position_callback);
 }
 
 void Controller::ProcessInput(GLFWwindow* window)

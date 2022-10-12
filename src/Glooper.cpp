@@ -9,10 +9,7 @@ Glooper::Glooper()
 	currentTexture = ResourceManager::GetTexture("stick");
 }
 
-Glooper::~Glooper()
-{
-
-}
+Glooper::~Glooper() {}
 
 void Glooper::Move(float dx, float dy)
 {
@@ -31,6 +28,12 @@ void Glooper::Hurt()
 void Glooper::Die()
 {
 
+}
+
+void Glooper::SetPos(float x, float y)
+{
+	this->x += x;
+	this->y += y;
 }
 
 float Glooper::GetX()
@@ -64,5 +67,10 @@ Texture& Glooper::GetSprite()
 		return currentTexture;
 	}
 
+	return currentTexture;
+}
+
+Texture& Glooper::GetSpriteLose()
+{
 	return currentTexture;
 }

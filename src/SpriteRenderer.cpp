@@ -26,10 +26,6 @@ SpriteRenderer::SpriteRenderer()
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glGenBuffers(1, &ebo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 	
 	//Should I be putting this here? Answer then unncomment
 	glEnableVertexAttribArray(0);
@@ -38,8 +34,6 @@ SpriteRenderer::SpriteRenderer()
 	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *)(3 * sizeof(float)));
 
 	texture = Texture::Texture(".\\textures\\stick.png", true);
-	shaderPtr = &shader;
-	texturePtr = &texture;
 }
 
 //New constructor to be tested. Might need to pass by reference?
@@ -57,13 +51,13 @@ void SpriteRenderer::Init()
 	y = 0;
 
 	float vertices[] = {   //Here are texture coords
-		0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
-		0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
 		-0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
 
-		0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
 		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-		-0.5f, 0.5f, 0.0f, 0.0f, 1.0f
+		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 	};
 
 	glGenVertexArrays(1, &vao);
@@ -83,8 +77,7 @@ SpriteRenderer::~SpriteRenderer()
 {
 	glDeleteVertexArrays(1, &vao);
 	glDeleteBuffers(1, &vbo);
-	glDeleteBuffers(1, &ebo);
-	shaderPtr->~Shader();
+	shader.~Shader();
 }
 
 void SpriteRenderer::Move(float x, float y)
@@ -93,59 +86,13 @@ void SpriteRenderer::Move(float x, float y)
 	this->y += y;
 }
 
-void SpriteRenderer::Draw()
+void SpriteRenderer::Render()
 {
 	shader.Use();
 	texture.Use();
 	shader.SetModel(x, y);
 
 	glBindVertexArray(vao);
-	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-}
-
-//Draw call to draw a sprite with a texture, at some position.
-void SpriteRenderer::Draw(Texture &texture, glm::vec3 position)
-{
-	shader.Use();	
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, position);
-	shader.SetMat4("model", model);
-	
-	glActiveTexture(GL_TEXTURE0);
-	texture.Use(); 
-	glBindVertexArray(vao);
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-}
-
-//Print a sprite rotated about the Z axis by angle in radians.
-void SpriteRenderer::Draw(Texture& texture, glm::vec3 position, float angle)
-{
-	shader.Use();
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, position);
-	model = glm::rotate(model, angle, glm::vec3(0.0f, 0.0f, 1.0f));
-	shader.SetMat4("model", model);
-
-	glActiveTexture(GL_TEXTURE0);
-	texture.Use();
-	glBindVertexArray(vao);
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-}
-
-//Newest draw call, drawing from a sprite sheet
-void SpriteRenderer::Draw(Texture& texture, glm::vec3 position, glm::vec2 bottomleft)
-{
-	shader.Use();
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, position);
-	shader.SetMat4("model", model);
-
-	glActiveTexture(GL_TEXTURE0);
-	texture.Use();
-	glBindVertexArray(vao);
-
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 

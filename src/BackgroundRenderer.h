@@ -1,20 +1,17 @@
 #pragma once
 #include <iostream>
+#include "Renderer.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "Texture.h"
 #include "Shader.h"
 #include "ResourceManager.h"
 
-class BackgroundRenderer
+class BackgroundRenderer : public Renderer
 {
 public:
 	BackgroundRenderer(Shader shader);
 	BackgroundRenderer();
 	void Render();
-private:
-	Shader shader;
-	Texture texture;
-	GLuint vao, vbo;
 };
 
