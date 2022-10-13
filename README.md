@@ -1,3 +1,3 @@
 # Unamed Alien Game
 
-A game where you play as a randomly generated alien on a randomly generated planet, where those aliens are also randomly generated.
+A simple game where you play as an alien and dodge asteroids for as long as possible. This game was made to for me to practice game development and programming.
