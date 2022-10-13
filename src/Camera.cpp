@@ -53,5 +53,7 @@ void Camera::View(float x, float y, unsigned int shaderProgram)
 
 void Camera::Aspect(float x, float y)
 {
+	x = x > 0 ? x : 0.1;
+	y = y > 0 ? y : 0.1;
 	projection = glm::perspective(fov, x / y, 0.1f, -8.0f);
 }
