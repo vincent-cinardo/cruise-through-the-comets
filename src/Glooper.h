@@ -11,6 +11,7 @@ public:
 	void SetPos(float x, float y);
 	void Hurt();
 	void Die();
+	void SetTexture(Texture& texture);
 	float GetX();
 	float GetY();
 	float GetSize();

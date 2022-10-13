@@ -30,10 +30,15 @@ void Glooper::Die()
 
 }
 
+void Glooper::SetTexture(Texture& texture)
+{
+	this->currentTexture = texture;
+}
+
 void Glooper::SetPos(float x, float y)
 {
-	this->x += x;
-	this->y += y;
+	this->x = x;
+	this->y = y;
 }
 
 float Glooper::GetX()

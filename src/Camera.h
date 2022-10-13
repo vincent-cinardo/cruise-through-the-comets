@@ -21,8 +21,11 @@ public:
 	void Aspect(float x, float y);
 	glm::mat4 view;
 	glm::mat4 projection;
+	float GetScreenWidth();
+	float GetScreenHeight();
+
 private:
 	float x, y, z;
-	float fov;
+	float fov, screenWidth, screenHeight;
 };
 

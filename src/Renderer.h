@@ -13,7 +13,15 @@ class Renderer
 public:
 	Renderer();
 	Renderer(Shader* shader);
-	virtual void Render() = 0;
+	virtual void Render()
+	{
+		shader.Use();
+		glActiveTexture(GL_TEXTURE0);
+		texture.Use();
+		glBindVertexArray(vao);
+
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+	}
 	void Draw(Texture& texture, glm::vec3 position);
 	void Draw(Texture& texture, glm::vec3 position, float angle);
 

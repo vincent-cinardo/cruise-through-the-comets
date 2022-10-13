@@ -8,6 +8,7 @@
 #include "Renderer.h"
 #include "BackgroundRenderer.h"
 #include "SpriteRenderer.h"
+#include "MenuRenderer.h"
 #include "AsteroidField.h"
 
 class Game
@@ -36,8 +37,8 @@ private:
 
 	unsigned int width, height;
 	Glooper glooper;
-	AsteroidField asteroidField;
-	Renderer *glooperRenderer, *backgroundRenderer;
+	AsteroidField* asteroidField;
+	Renderer *glooperRenderer, *backgroundRenderer, *menuRenderer;
 };
 
 

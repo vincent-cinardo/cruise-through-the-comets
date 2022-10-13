@@ -63,3 +63,10 @@ std::vector<Asteroid*> AsteroidField::GetAsteroids()
 {
 	return asteroids;
 }
+
+bool AsteroidField::Empty()
+{
+	if (asteroids.empty())
+		return true;
+	else return false;
+}

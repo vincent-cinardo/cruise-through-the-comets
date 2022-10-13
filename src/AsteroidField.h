@@ -15,8 +15,10 @@ public:
 	void SpawnAsteroid();
 	void UpdateAsteroids(float dt);
 	void DeleteAsteroid(Asteroid* asteroid);
+	void DeleteAsteroids();
 	void Render(Renderer* renderer);
 	std::vector<Asteroid*> GetAsteroids();
+	bool Empty();
 private:
 	std::vector<Asteroid*> asteroids;
 	float nextAsteroidSpawn;

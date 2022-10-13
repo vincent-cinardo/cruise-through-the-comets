@@ -7,6 +7,8 @@ Camera::Camera()
 	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -4.0f));
 	fov = 90.0f;
 	projection = glm::perspective(fov, 1920.0f/1080.0f, 0.1f, -8.0f);
+	screenWidth = 1920.0f;
+	screenHeight = 1080.0f;
 }
 
 Camera::Camera(glm::mat4 view, glm::mat4 projection)
@@ -56,4 +58,16 @@ void Camera::Aspect(float x, float y)
 	x = x > 0 ? x : 0.1;
 	y = y > 0 ? y : 0.1;
 	projection = glm::perspective(fov, x / y, 0.1f, -8.0f);
+	screenWidth = x;
+	screenHeight = y;
+}
+
+float Camera::GetScreenWidth()
+{
+	return screenWidth;
+}
+
+float Camera::GetScreenHeight()
+{
+	return screenHeight;
 }
